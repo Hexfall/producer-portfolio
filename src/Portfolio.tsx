@@ -1,4 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import ouas_showcase from './assets/OUaS - Showcase.png';
+import shaemmy_showcase from './assets/Shaemmy - Showcase.png';
+import cank_showcase from './assets/CANK - Showcase.png';
+import chibo_showcase from './assets/Chibo - Showcase.png';
+import steamLogo from './assets/steam.svg';
+import itchLogo from './assets/itch-io.svg';
+import emailLogo from './assets/email.svg';
+import discordLogo from './assets/discord.svg';
+import linkedinLogo from './assets/linkedin.svg';
 
 interface Project {
   id: number;
@@ -6,44 +15,53 @@ interface Project {
   description: string;
   image: string;
   features: string[];
+  links?: {
+    steam?: string;
+    itch?: string;
+  };
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Hexfall Studio',
+    title: 'Once Upon a Shell',
     description: 'A clean portfolio experience with animated project highlights and modern interface.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    image: ouas_showcase,
     features: ['Responsive design', 'Project spotlight carousel', 'Scroll snap sections'],
+    links: {itch: 'https://razzledazzle-studio.itch.io/once-upon-a-shell', steam: 'https://store.steampowered.com/app/4107970/Once_Upon_a_Shell/'},
   },
   {
     id: 2,
-    title: 'Pixel Shop',
+    title: 'Shaemmy',
     description: 'An e-commerce landing page designed to showcase product visuals and conversion flows.',
-    image: 'https://images.unsplash.com/photo-1545235617-9465f330f3d4?auto=format&fit=crop&w=1200&q=80',
+    image: shaemmy_showcase,
     features: ['Interactive product cards', 'Minimal checkout layout', 'Fast animations'],
+    links: {itch: 'https://hexfall.itch.io/shaemmy'},
   },
   {
     id: 3,
-    title: 'Travel Guide',
+    title: 'CANK!',
     description: 'A travel and destination guide that presents locations with rich imagery and storytelling.',
-    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+    image: cank_showcase,
     features: ['Story-driven pages', 'Photo-rich design', 'Map and itinerary view'],
+    links: {itch: 'https://razzledazzle-studio.itch.io/cank'},
   },
   {
     id: 4,
-    title: 'Analytics Dashboard',
+    title: 'Chibo: Journey of Fate',
     description: 'A sleek dashboard concept for tracking metrics and team performance in real time.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    image: chibo_showcase,
     features: ['Data visualizations', 'Clean card layout', 'Multiple device support'],
+    links: {itch: 'https://simmix-dev.itch.io/chibo-journey-of-fate'},
   },
 ];
 
 const Portfolio: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [displayedIndex, setDisplayedIndex] = useState(0);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [showConnectModal, setShowConnectModal] = useState(false);
-  const [showAboutModal, setShowAboutModal] = useState(false);
+  const [timerResetKey, setTimerResetKey] = useState(0);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const headerRef = useRef<HTMLElement | null>(null);
 
@@ -52,39 +70,89 @@ const Portfolio: React.FC = () => {
     sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const handleNextProject = () => {
+    setActiveIndex((current) => (current + 1) % projects.length);
+    setTimerResetKey((prev) => prev + 1);
+  };
+
+  const handlePrevProject = () => {
+    setActiveIndex((current) => (current - 1 + projects.length) % projects.length);
+    setTimerResetKey((prev) => prev + 1);
+  };
+
+  const handleDotClick = (index: number) => {
+    setActiveIndex(index);
+    setTimerResetKey((prev) => prev + 1);
+  };
+
   const showcaseImgRef = useRef<HTMLImageElement | null>(null);
   const showcaseOverlayRef = useRef<HTMLDivElement | null>(null);
+  const prevIndexRef = useRef(0);
 
+  // Handle exit animation when activeIndex changes
+  useEffect(() => {
+    if (activeIndex === displayedIndex) return;
+
+    const img = showcaseImgRef.current;
+    const overlay = showcaseOverlayRef.current;
+    if (!img || !overlay) return;
+
+    // Determine direction for smooth transition
+    const isNext = (activeIndex > prevIndexRef.current) || (prevIndexRef.current === projects.length - 1 && activeIndex === 0);
+    prevIndexRef.current = activeIndex;
+    const exitOffset = isNext ? -40 : 40;
+
+    // Animate out the current image
+    img.style.transition = 'transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 600ms ease';
+    overlay.style.transition = 'transform 750ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 650ms ease';
+    img.style.transform = `translateX(${exitOffset}px)`;
+    img.style.opacity = '0';
+    overlay.style.transform = `translateX(${exitOffset * 0.65}px)`;
+    overlay.style.opacity = '0';
+
+    // After exit animation, update image and animate in
+    const timer = setTimeout(() => {
+      setDisplayedIndex(activeIndex);
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, [activeIndex, displayedIndex]);
+
+  // Handle entrance animation when displayedIndex updates
   useEffect(() => {
     const img = showcaseImgRef.current;
     const overlay = showcaseOverlayRef.current;
     if (!img || !overlay) return;
 
-    // prepare initial state for smooth horizontal entrance
-    img.style.transition = 'transform 600ms cubic-bezier(.2,.8,.2,1), opacity 500ms ease';
-    overlay.style.transition = 'transform 650ms cubic-bezier(.2,.8,.2,1), opacity 550ms ease';
+    const isNext = (displayedIndex > prevIndexRef.current) || (prevIndexRef.current === projects.length - 1 && displayedIndex === 0);
+    const enterOffset = isNext ? 40 : -40;
 
-    // start slightly to the right and transparent
-    img.style.transform = 'translateX(28px)';
+    // Step 1: Remove transitions and set initial state
+    img.style.transition = 'none';
+    overlay.style.transition = 'none';
+    img.style.transform = `translateX(${enterOffset}px)`;
     img.style.opacity = '0';
-    overlay.style.transform = 'translateX(18px)';
+    overlay.style.transform = `translateX(${enterOffset * 0.65}px)`;
     overlay.style.opacity = '0';
 
-    // trigger into place on next frame
-    requestAnimationFrame(() => {
-      img.style.transform = 'translateX(0)';
-      img.style.opacity = '1';
-      overlay.style.transform = 'translateX(0)';
-      overlay.style.opacity = '1';
-    });
-  }, [activeIndex]);
+    // Step 2: Force reflow to apply initial state
+    void img.offsetHeight;
+
+    // Step 3: Enable transitions and animate to final state
+    img.style.transition = 'transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 600ms ease';
+    overlay.style.transition = 'transform 750ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 650ms ease';
+    img.style.transform = 'translateX(0)';
+    img.style.opacity = '1';
+    overlay.style.transform = 'translateX(0)';
+    overlay.style.opacity = '1';
+  }, [displayedIndex]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % projects.length);
     }, 5000);
     return () => window.clearInterval(interval);
-  }, []);
+  }, [timerResetKey]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -177,13 +245,13 @@ const Portfolio: React.FC = () => {
         <div style={{ display: 'flex', gap: '0.75rem' }}>
           <button
             type="button"
-            onClick={() => setShowAboutModal(true)}
+            onClick={() => setShowConnectModal(true)}
             style={{
-              padding: '0.75rem 1.2rem',
+              padding: '0.3rem 0.8rem',
               borderRadius: '999px',
-              border: '1px solid rgba(148,163,184,0.24)',
-              background: 'transparent',
-              color: '#f8fafc',
+              border: 'none',
+              background: '#38bdf8',
+              color: '#0f172a',
               cursor: 'pointer',
               fontSize: '0.95rem',
             }}
@@ -194,23 +262,8 @@ const Portfolio: React.FC = () => {
                 alt="Viktor"
                 style={{width: '32px', height: '32px', borderRadius: '999px', objectFit: 'cover', flexShrink: 0}}
               />
-              About me
+              Connect
             </span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowConnectModal(true)}
-            style={{
-              padding: '0.75rem 1.2rem',
-              borderRadius: '999px',
-              border: 'none',
-              background: '#38bdf8',
-              color: '#0f172a',
-              cursor: 'pointer',
-              fontSize: '0.95rem',
-            }}
-          >
-            Connect
           </button>
         </div>
       </div>
@@ -241,26 +294,39 @@ const Portfolio: React.FC = () => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
+            <div style={{display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '1.5rem'}}>
+              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100055314564431&f=1&nofb=1&ipt=2dc36bb7a68d577380c589193bb947873bd7ccc348a8a2ffddfcd7c1c1f4c7d5" alt="Viktor" style={{width: '100px', height: '100px', borderRadius: '12px', objectFit: 'cover', flexShrink: 0}} />
+              <div>
+                <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#f8fafc' }}>Viktor Máni Mønster</h3>
+                <p style={{ margin: 0, lineHeight: 1.6, fontSize: '0.9rem', color: '#cbd5e1' }}>
+                  Frontend-focused developer who loves crafting clean, interactive interfaces and animation-forward experiences. React, TypeScript and modern CSS.
+                </p>
+              </div>
+            </div>
             <h3 style={{ margin: '0 0 1.5rem 0', fontSize: '1.5rem', color: '#f8fafc' }}>Let's connect</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '0.75rem', justifyContent: 'center' }}>
               <button
                 type="button"
                 onClick={() => {
                   window.open('https://www.linkedin.com/in/viktor-m%C3%A1ni-m%C3%B8nster-525231203/', '_blank');
                   setShowConnectModal(false);
                 }}
+                aria-label="LinkedIn"
                 style={{
-                  padding: '0.85rem 1.2rem',
-                  borderRadius: '0.75rem',
+                  width: '75px',
+                  height: '75px',
+                  borderRadius: '18px',
                   border: '1px solid rgba(148, 163, 184, 0.24)',
-                  background: 'rgba(56, 189, 248, 0.1)',
+                  background: 'rgba(56, 189, 248, 0.08)',
                   color: '#38bdf8',
                   cursor: 'pointer',
-                  fontSize: '0.95rem',
-                  fontWeight: 500,
+                  padding: 0,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                LinkedIn
+                <img src={linkedinLogo} alt="LinkedIn" style={{ width: '36px', height: '36px', display: 'block', filter: 'brightness(0)' }} />
               </button>
               <button
                 type="button"
@@ -268,18 +334,22 @@ const Portfolio: React.FC = () => {
                   navigator.clipboard.writeText('viktor@mani.monster');
                   setShowConnectModal(false);
                 }}
+                aria-label="Email"
                 style={{
-                  padding: '0.85rem 1.2rem',
-                  borderRadius: '0.75rem',
+                  width: '75px',
+                  height: '75px',
+                  borderRadius: '18px',
                   border: '1px solid rgba(148, 163, 184, 0.24)',
-                  background: 'rgba(56, 189, 248, 0.1)',
+                  background: 'rgba(56, 189, 248, 0.08)',
                   color: '#38bdf8',
                   cursor: 'pointer',
-                  fontSize: '0.95rem',
-                  fontWeight: 500,
+                  padding: 0,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                Email: viktor@mani.monster
+                <img src={emailLogo} alt="Email" style={{ width: '36px', height: '36px', display: 'block', filter: 'brightness(0)' }} />
               </button>
               <button
                 type="button"
@@ -287,80 +357,28 @@ const Portfolio: React.FC = () => {
                   window.open('https://discord.gg', '_blank');
                   setShowConnectModal(false);
                 }}
+                aria-label="Discord"
                 style={{
-                  padding: '0.85rem 1.2rem',
-                  borderRadius: '0.75rem',
+                  width: '75px',
+                  height: '75px',
+                  borderRadius: '18px',
                   border: '1px solid rgba(148, 163, 184, 0.24)',
-                  background: 'rgba(56, 189, 248, 0.1)',
+                  background: 'rgba(56, 189, 248, 0.08)',
                   color: '#38bdf8',
                   cursor: 'pointer',
-                  fontSize: '0.95rem',
-                  fontWeight: 500,
+                  padding: 0,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                Discord
+                <img src={discordLogo} alt="Discord" style={{ width: '36px', height: '36px', display: 'block', filter: 'brightness(0)' }} />
               </button>
             </div>
           </div>
         </div>
       )}
-      {showAboutModal && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0, 0, 0, 0.7)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 1000,
-          }}
-          onClick={() => setShowAboutModal(false)}
-        >
-          <div
-            style={{
-              background: '#0b1220',
-              borderRadius: '1rem',
-              padding: '2rem',
-              maxWidth: '520px',
-              color: '#e6eef8',
-              boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div style={{display: 'flex', gap: '1rem', alignItems: 'flex-start'}}>
-              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100055314564431&f=1&nofb=1&ipt=2dc36bb7a68d577380c589193bb947873bd7ccc348a8a2ffddfcd7c1c1f4c7d5" alt="Viktor large" style={{width: '160px', height: '160px', borderRadius: '12px', objectFit: 'cover', flexShrink: 0}} />
-              <div>
-                <h3 style={{ margin: '0 0 1rem 0' }}>About me</h3>
-                <p style={{ margin: 0, lineHeight: 1.6 }}>
-                  Hi — I'm Viktor, a frontend-focused developer who loves crafting clean, interactive interfaces,
-                  animation-forward experiences and thoughtful UX. I work with React, TypeScript and modern CSS to
-                  build performant and accessible products.
-                </p>
-              </div>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.25rem' }}>
-              <button
-                type="button"
-                onClick={() => setShowAboutModal(false)}
-                style={{
-                  padding: '0.6rem 1rem',
-                  borderRadius: '0.6rem',
-                  border: 'none',
-                  background: '#38bdf8',
-                  color: '#071124',
-                  cursor: 'pointer',
-                }}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+
       <header
         style={{
           // allow scrolling to showcase via headerRef
@@ -381,7 +399,7 @@ const Portfolio: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '100%', maxWidth: '1000px' }}>
             <button
               type="button"
-              onClick={() => setActiveIndex((current) => (current - 1 + projects.length) % projects.length)}
+              onClick={handlePrevProject}
               aria-label="Previous project"
               style={{
                 flexShrink: 0,
@@ -417,8 +435,8 @@ const Portfolio: React.FC = () => {
               }}
             >
               <img
-                src={projects[activeIndex].image}
-                alt={projects[activeIndex].title}
+                src={projects[displayedIndex].image}
+                alt={projects[displayedIndex].title}
                 ref={showcaseImgRef}
                 style={{ width: '100%', height: '450px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
               />
@@ -433,13 +451,13 @@ const Portfolio: React.FC = () => {
                 }}
                 ref={showcaseOverlayRef}
               >
-                <h2 style={{ margin: 0, fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)' }}>{projects[activeIndex].title}</h2>
-                <p style={{ margin: '0.5rem 0 0', opacity: 0.9 }}>{projects[activeIndex].description}</p>
+                <h2 style={{ margin: 0, fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)' }}>{projects[displayedIndex].title}</h2>
+                <p style={{ margin: '0.5rem 0 0', opacity: 0.9 }}>{projects[displayedIndex].description}</p>
               </div>
             </div>
             <button
               type="button"
-              onClick={() => setActiveIndex((current) => (current + 1) % projects.length)}
+              onClick={handleNextProject}
               aria-label="Next project"
               style={{
                 flexShrink: 0,
@@ -467,7 +485,7 @@ const Portfolio: React.FC = () => {
               <button
                 key={project.id}
                 type="button"
-                onClick={() => setActiveIndex(index)}
+                onClick={() => handleDotClick(index)}
                 aria-label={`Showcase ${project.title}`}
                 style={{
                   width: '0.85rem',
@@ -513,6 +531,54 @@ const Portfolio: React.FC = () => {
                 </li>
               ))}
             </ul>
+            {/* Links (itch / steam) */}
+            <div style={{ marginTop: '1.25rem', display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+              {project.links?.itch && (
+                <a
+                  href={project.links.itch}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="View on itch.io"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '8px',
+                    background: 'transparent',
+                    color: '#0f172a',
+                    textDecoration: 'none',
+                    outline: 'none',
+                  }}
+                >
+                  <img src={itchLogo} alt="itch.io" style={{ width: '22px', height: '22px', display: 'block' }} />
+                </a>
+              )}
+
+              {project.links?.steam && (
+                <a
+                  href={project.links.steam}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="View on Steam"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '8px',
+                    background: 'transparent',
+                    color: '#0f172a',
+                    textDecoration: 'none',
+                    outline: 'none',
+                  }}
+                >
+                  <img src={steamLogo} alt="Steam" style={{ width: '22px', height: '22px', display: 'block' }} />
+                </a>
+              )}
+            </div>
           </div>
           <div style={{ borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 25px 60px rgba(15,23,42,0.16)' }}>
             <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', minHeight: '420px', objectFit: 'cover' }} />
