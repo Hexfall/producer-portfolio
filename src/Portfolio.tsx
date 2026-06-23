@@ -12,6 +12,17 @@ import photo from './assets/photo.jpg';
 import ConnectModal from './components/ConnectModal';
 import ProjectLinks from './components/ProjectLinks';
 
+interface ProjectPoint {
+    title: string;
+    body: string;
+    image?: Graphic;
+}
+
+interface Graphic {
+    type: 'image' | 'youtube';
+    src: string;
+}
+
 interface Project {
   id: number;
   title: string;
@@ -24,6 +35,7 @@ interface Project {
     steam?: string;
     itch?: string;
   };
+  points: ProjectPoint[];
 }
 
 const projects: Project[] = [
@@ -36,6 +48,19 @@ const projects: Project[] = [
     features: ['Responsive design', 'Project spotlight carousel', 'Scroll snap sections'],
     color: '#bde7b3',
     links: {itch: 'https://razzledazzle-studio.itch.io/once-upon-a-shell', steam: 'https://store.steampowered.com/app/4107970/Once_Upon_a_Shell/'},
+    points: [{
+            title: "Overview",
+            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            image: { type: 'youtube', src: 'hUoZwh0RoH4' },
+        }, {
+            title: "Gameplay",
+            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            image: { type: 'image', src: ouas_showcase },
+        }, {
+            title: "Ideation",
+            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
+            image: { type: 'image', src: ouas_showcase },
+  }]
   },
   {
     id: 2,
@@ -46,6 +71,19 @@ const projects: Project[] = [
     features: ['Interactive product cards', 'Minimal checkout layout', 'Fast animations'],
     color: '#abbbe6',
     links: {itch: 'https://hexfall.itch.io/shaemmy'},
+    points: [{
+            title: "Overview",
+            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            image: { type: 'image', src: shaemmy_showcase },
+        }, {
+            title: "Gameplay",
+            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            image: { type: 'image', src: shaemmy_showcase },
+        }, {
+            title: "Ideation",
+            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
+            image: { type: 'image', src: shaemmy_showcase },
+  }]
   },
   {
     id: 3,
@@ -56,6 +94,19 @@ const projects: Project[] = [
     features: ['Story-driven pages', 'Photo-rich design', 'Map and itinerary view'],
     color: '#efbdb1',
     links: {itch: 'https://razzledazzle-studio.itch.io/cank'},
+    points: [{
+            title: "Overview",
+            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            image: { type: 'image', src: cank_showcase },
+        }, {
+            title: "Gameplay",
+            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            image: { type: 'image', src: cank_showcase },
+        }, {
+            title: "Ideation",
+            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
+            image: { type: 'image', src: cank_showcase },
+  }]
   },
   {
     id: 4,
@@ -66,6 +117,19 @@ const projects: Project[] = [
     features: ['Data visualizations', 'Clean card layout', 'Multiple device support'],
     color: '#ffd6ad',
     links: {itch: 'https://simmix-dev.itch.io/chibo-journey-of-fate'},
+    points: [{
+            title: "Overview",
+            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            image: { type: 'youtube', src: 'MxJ5GkymzOs' },
+        }, {
+            title: "Gameplay",
+            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            image: { type: 'image', src: chibo_showcase },
+        }, {
+            title: "Ideation",
+            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
+            image: { type: 'image', src: chibo_showcase },
+  }]
   },
 ];
 
@@ -436,15 +500,14 @@ const Portfolio: React.FC = () => {
             scrollSnapAlign: 'start',
             minHeight: '100vh',
             padding: '4rem 2rem',
-            display: 'grid',
             gridTemplateColumns: '1.1fr 0.9fr',
             alignItems: 'center',
-            gap: '2rem',
+            gap: '0rem',
             background: project.color,
             color: '#0f172a',
           }}
         >
-          <div style={{ maxWidth: '700px' }}>
+          <div style={{ maxWidth: '1920px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span style={{ textTransform: 'uppercase', letterSpacing: '0.3em', fontSize: '0.8rem', opacity: 0.8 }}>Project detail</span>
             {project.titleGraphic ? (
               <div style={{ width: '100%', maxWidth: '1680px', height: '360px', margin: '1rem auto 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -458,17 +521,51 @@ const Portfolio: React.FC = () => {
               <h2 style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', margin: '1rem 0 0 0' }}>{project.title}</h2>
             )}
             <ProjectLinks steam={project.links?.steam} itch={project.links?.itch} />
-            <p style={{ fontSize: '1.05rem', lineHeight: '1.9', margin: 0 }}>{project.description}</p>
-            <ul style={{ margin: '1.5rem 0 0', paddingLeft: '1.2rem', color: '#334155' }}>
-              {project.features.map((feature) => (
-                <li key={feature} style={{ marginBottom: '0.75rem' }}>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div style={{ borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 25px 60px rgba(15,23,42,0.16)' }}>
-            <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', minHeight: '420px', objectFit: 'cover' }} />
+
+            {/* Points placed under title/description and centered */}
+            <div style={{ width: '100%', margin: '1.5rem auto 0', display: 'flex', flexDirection: 'column', gap: '3.25rem', alignItems: 'center' }}>
+              {project.points.map((pt, pIndex) => {
+                const isEven = pIndex % 2 === 0;
+                return (
+                  <div
+                    key={pIndex}
+                    style={{
+                      display: 'flex',
+                      gap: '1.5rem',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexDirection: isEven ? 'row' : 'row-reverse',
+                      flexWrap: 'wrap',
+                      width: '90%',
+                      borderRadius: '1rem',
+                      overflow: 'hidden',
+                      padding: '1.25rem',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      <h1 style={{ margin: '0.5rem', textAlign: 'center', color: '#0f172a' }}>{pt.title}</h1>
+                      <p style={{ margin: '0', lineHeight: 1.8 }}>{pt.body}</p>
+                    </div>
+                    <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', justifyContent: 'center' }}>
+                      {pt.image?.type === 'youtube' ? (
+                        <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
+                          <iframe
+                            title={`${project.title} - ${pt.title} video`}
+                            src={`https://www.youtube.com/embed/${pt.image.src}`}
+                            style={{ width: '100%', height: '100%', border: 0 }}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      ) : (
+                        <img src={pt.image?.src || project.image} alt={pt.title} style={{ width: '100%', height: '100%', maxHeight: '420px', objectFit: 'cover', borderRadius: '0.75rem' }} />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
       ))}
