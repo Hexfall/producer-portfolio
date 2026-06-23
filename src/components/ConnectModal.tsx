@@ -2,6 +2,7 @@ import React from 'react';
 import emailLogo from '../assets/email.svg';
 import discordLogo from '../assets/discord.svg';
 import linkedinLogo from '../assets/linkedin.svg';
+import photo from '../assets/photo.jpg';
 
 interface ConnectModalProps {
   onClose: () => void;
@@ -28,13 +29,32 @@ const logoStyle: React.CSSProperties = {
   filter: 'brightness(0)',
 };
 
-const profileImageUrl =
-  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100055314564431&f=1&nofb=1&ipt=2dc36bb7a68d577380c589193bb947873bd7ccc348a8a2ffddfcd7c1c1f4c7d5';
-
 const ConnectModal: React.FC<ConnectModalProps> = ({ onClose }) => {
+  const [visible, setVisible] = React.useState(false);
+  const timeoutRef = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    const raf = requestAnimationFrame(() => setVisible(true));
+    return () => {
+      cancelAnimationFrame(raf);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  const closeWithAnimation = () => {
+    setVisible(false);
+    // Wait for the longest transition (220ms) plus a small buffer
+    timeoutRef.current = window.setTimeout(() => {
+      timeoutRef.current = null;
+      onClose();
+    }, 150);
+  };
+
   const openLink = (url: string) => {
     window.open(url, '_blank');
-    onClose();
+    closeWithAnimation();
   };
 
   return (
@@ -51,7 +71,7 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ onClose }) => {
         alignItems: 'center',
         zIndex: 1000,
       }}
-      onClick={onClose}
+      onClick={closeWithAnimation}
     >
       <div
         style={{
@@ -61,12 +81,15 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ onClose }) => {
           maxWidth: '420px',
           boxShadow: '0 40px 100px rgba(0, 0, 0, 0.5)',
           border: '1px solid rgba(148, 163, 184, 0.2)',
+          transform: visible ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.96)',
+          opacity: visible ? 1 : 0,
+          transition: 'transform 220ms cubic-bezier(0.2,0.9,0.2,1), opacity 180ms ease',
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
           <img
-            src={profileImageUrl}
+            src={photo}
             alt="Viktor"
             style={{ width: '100px', height: '100px', borderRadius: '12px', objectFit: 'cover', flexShrink: 0 }}
           />
@@ -83,25 +106,25 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ onClose }) => {
             type="button"
             onClick={() => openLink('https://www.linkedin.com/in/viktor-m%C3%A1ni-m%C3%B8nster-525231203/')}
             aria-label="LinkedIn"
+            title="Viktor Máni Mønster"
             style={iconButtonStyle}
           >
             <img src={linkedinLogo} alt="LinkedIn" style={logoStyle} />
           </button>
           <button
             type="button"
-            onClick={() => {
-              navigator.clipboard.writeText('viktor@mani.monster');
-              onClose();
-            }}
+            onClick={() => {openLink('https://www.linkedin.com/in/viktor-m%C3%A1ni-m%C3%B8nster-525231203/')          }}
             aria-label="Email"
+            title="viktor@mani.monster"
             style={iconButtonStyle}
           >
             <img src={emailLogo} alt="Email" style={logoStyle} />
           </button>
           <button
             type="button"
-            onClick={() => openLink('https://discord.gg')}
+            onClick={() => openLink('https://discord.com/users/hexfall')}
             aria-label="Discord"
+            title="hexfall"
             style={iconButtonStyle}
           >
             <img src={discordLogo} alt="Discord" style={logoStyle} />

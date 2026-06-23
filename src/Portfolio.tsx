@@ -8,6 +8,7 @@ import cank_title from './assets/CANK - Title.png';
 import chibo_showcase from './assets/Chibo - Showcase.png';
 import chibo_title from './assets/Chibo - Title.png';
 import home_icon from './assets/home.svg';
+import photo from './assets/photo.jpg';
 import ConnectModal from './components/ConnectModal';
 import ProjectLinks from './components/ProjectLinks';
 
@@ -202,7 +203,7 @@ const Portfolio: React.FC = () => {
         height: '100vh',
         overflowY: 'scroll',
         scrollSnapType: 'y mandatory',
-        fontFamily: 'Inter, system-ui, sans-serif',
+        fontFamily: 'IBM Plex Sans, Inter, system-ui, sans-serif',
         background: '#0f172a',
         color: '#f8fafc',
       }}
@@ -228,18 +229,21 @@ const Portfolio: React.FC = () => {
               setActiveSectionIndex(-1);
               headerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
+            aria-label="Home"
             style={{
-              padding: '0.55rem 0.9rem',
-              borderRadius: '999px',
+              width: '3rem',
+              height: '3rem',
+              padding: 0,
+              borderRadius: '1rem',
               border: activeSectionIndex === -1 ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
               background: activeSectionIndex === -1 ? 'rgba(56,189,248,0.16)' : 'transparent',
-              color: activeSectionIndex === -1 ? '#38bdf8' : '#f8fafc',
-              fontSize: '0.85rem',
-              fontWeight: activeSectionIndex === -1 ? 600 : 500,
               cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            Home
+            <img src={home_icon} alt="Home" style={{ width: '1.2rem', height: '1.2rem', display: 'block' }} />
           </button>
 
           {projects.map((project, index) => (
@@ -248,17 +252,25 @@ const Portfolio: React.FC = () => {
               type="button"
               onClick={() => scrollToProject(index)}
               style={{
-                padding: '0.55rem 0.9rem',
-                borderRadius: '999px',
+                height: '3rem',
+                padding: '0 0.6rem',
+                borderRadius: '1rem',
                 border: index === activeSectionIndex ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
                 background: index === activeSectionIndex ? 'rgba(56,189,248,0.16)' : 'transparent',
                 color: index === activeSectionIndex ? '#38bdf8' : '#f8fafc',
-                fontSize: '0.85rem',
+                fontSize: '0.9rem',
                 fontWeight: index === activeSectionIndex ? 600 : 500,
                 cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              {project.title}
+              {project.titleGraphic ? (
+                <img src={project.titleGraphic} alt={project.title} style={{ width: '10rem', height: '1.8rem', objectFit: 'contain', display: 'block' }} />
+              ) : (
+                project.title
+              )}
             </button>
           ))}
         </div>
@@ -278,7 +290,7 @@ const Portfolio: React.FC = () => {
           >
             <span style={{display: 'inline-flex', alignItems: 'center', gap: '0.6rem'}}>
               <img
-                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100055314564431&f=1&nofb=1&ipt=2dc36bb7a68d577380c589193bb947873bd7ccc348a8a2ffddfcd7c1c1f4c7d5"
+                src={photo}
                 alt="Viktor"
                 style={{width: '32px', height: '32px', borderRadius: '999px', objectFit: 'cover', flexShrink: 0}}
               />
@@ -304,9 +316,10 @@ const Portfolio: React.FC = () => {
           background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)',
         }}
       >
-          <h1 style={{ textAlign: 'center', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)', margin: '1rem' }}>Projects in motion</h1>
+          <h1 style={{ textAlign: 'center', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)', margin: '0.2rem' }}>Viktor Máni Mønster</h1>
+          <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', margin: '0rem' }}>Game Producer</h2>
         <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '100%', maxWidth: '1920px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '80%', maxWidth: '1920px' }}>
             <button
               type="button"
               onClick={handlePrevProject}
@@ -348,7 +361,7 @@ const Portfolio: React.FC = () => {
                 src={projects[displayedIndex].image}
                 alt={projects[displayedIndex].title}
                 ref={showcaseImgRef}
-                style={{ width: '100%', height: '700px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
+                style={{ width: '100%', height: '600px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
               />
               <div
                 style={{
