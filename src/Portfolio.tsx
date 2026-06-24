@@ -1,16 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ouas_showcase from './assets/OUaS - Showcase.png';
-import ouas_title from './assets/OUaS - Title.png';
-import shaemmy_showcase from './assets/Shaemmy - Showcase.png';
-import shaemmy_title from './assets/Shaemmy - Title.png';
-import cank_showcase from './assets/CANK - Showcase.png';
-import cank_title from './assets/CANK - Title.png';
-import chibo_showcase from './assets/Chibo - Showcase.png';
-import chibo_title from './assets/Chibo - Title.png';
+import ouas_showcase from './assets/OUaS/gameplay_gif.gif';
+import ouas_title from './assets/OUaS/OUaS - Title.png';
+import ouas_main from './assets/OUaS/OUaS - Showcase.png';
+import shaemmy_showcase from './assets/Shaemmy/Shaemmy - gameplay.gif';
+import shaemmy_main from './assets/Shaemmy/Shaemmy - Showcase.png';
+import shaemmy_title from './assets/Shaemmy/Shaemmy - Title.png';
+import cank_showcase from './assets/CANK/CANK - gameplay.gif';
+import cank_main from './assets/CANK/CANK - Showcase.png';
+import cank_title from './assets/CANK/CANK - Title.png';
+import chibo_showcase from './assets/Chibo/Chibo - gameplay.gif';
+import chibo_main from './assets/Chibo/Chibo - Showcase.png';
+import chibo_title from './assets/Chibo/Chibo - Title.png';
 import home_icon from './assets/home.svg';
 import photo from './assets/photo.jpg';
 import ConnectModal from './components/ConnectModal';
 import ProjectLinks from './components/ProjectLinks';
+import peter_rabbit from './assets/OUaS/peter_rabbit.png';
 
 interface ProjectPoint {
     title: string;
@@ -46,16 +51,16 @@ const projects: Project[] = [
     image: ouas_showcase,
     titleGraphic: ouas_title,
     features: ['Responsive design', 'Project spotlight carousel', 'Scroll snap sections'],
-    color: '#bde7b3',
+    color: '#cff3c6',
     links: {itch: 'https://razzledazzle-studio.itch.io/once-upon-a-shell', steam: 'https://store.steampowered.com/app/4107970/Once_Upon_a_Shell/'},
     points: [{
             title: "Overview",
             body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
             image: { type: 'youtube', src: 'hUoZwh0RoH4' },
         }, {
-            title: "Gameplay",
+            title: "Ideation",
             body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
-            image: { type: 'image', src: ouas_showcase },
+            image: { type: 'image', src: peter_rabbit },
         }, {
             title: "Ideation",
             body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
@@ -69,20 +74,20 @@ const projects: Project[] = [
     image: shaemmy_showcase,
     titleGraphic: shaemmy_title,
     features: ['Interactive product cards', 'Minimal checkout layout', 'Fast animations'],
-    color: '#abbbe6',
+    color: '#caecef',
     links: {itch: 'https://hexfall.itch.io/shaemmy'},
     points: [{
             title: "Overview",
             body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
-            image: { type: 'image', src: shaemmy_showcase },
+            image: { type: 'image', src: shaemmy_main },
         }, {
             title: "Gameplay",
             body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
-            image: { type: 'image', src: shaemmy_showcase },
+            image: { type: 'image', src: shaemmy_main },
         }, {
             title: "Ideation",
             body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
-            image: { type: 'image', src: shaemmy_showcase },
+            image: { type: 'image', src: shaemmy_main },
   }]
   },
   {
@@ -97,15 +102,15 @@ const projects: Project[] = [
     points: [{
             title: "Overview",
             body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
-            image: { type: 'image', src: cank_showcase },
+            image: { type: 'image', src: cank_main },
         }, {
             title: "Gameplay",
             body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
-            image: { type: 'image', src: cank_showcase },
+            image: { type: 'image', src: cank_main },
         }, {
             title: "Ideation",
             body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
-            image: { type: 'image', src: cank_showcase },
+            image: { type: 'image', src: cank_main },
   }]
   },
   {
@@ -124,11 +129,11 @@ const projects: Project[] = [
         }, {
             title: "Gameplay",
             body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
-            image: { type: 'image', src: chibo_showcase },
+            image: { type: 'image', src: chibo_main },
         }, {
             title: "Ideation",
             body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
-            image: { type: 'image', src: chibo_showcase },
+            image: { type: 'image', src: chibo_main },
   }]
   },
 ];
@@ -190,7 +195,7 @@ const Portfolio: React.FC = () => {
     // After exit animation, update image and animate in
     const timer = setTimeout(() => {
       setDisplayedIndex(activeIndex);
-    }, 600);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [activeIndex, displayedIndex]);
@@ -531,7 +536,7 @@ const Portfolio: React.FC = () => {
                     key={pIndex}
                     style={{
                       display: 'flex',
-                      gap: '1.5rem',
+                      gap: '5% 15%',
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       flexDirection: isEven ? 'row' : 'row-reverse',
@@ -545,7 +550,7 @@ const Portfolio: React.FC = () => {
                   >
                     <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                       <h1 style={{ margin: '0.5rem', textAlign: 'center', color: '#0f172a' }}>{pt.title}</h1>
-                      <p style={{ margin: '0', lineHeight: 1.8 }}>{pt.body}</p>
+                      <p style={{ margin: '0 0 1rem 0', lineHeight: 1.8 }}>{pt.body}</p>
                     </div>
                     <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', justifyContent: 'center' }}>
                       {pt.image?.type === 'youtube' ? (
@@ -567,6 +572,8 @@ const Portfolio: React.FC = () => {
               })}
             </div>
           </div>
+          {/* Spacing below projects, so they don't move along too quick */}
+          { project.id !== projects.length ? (<div style={{ width: '100%', height: '40rem' }} />) : (null) }
         </section>
       ))}
     </div>

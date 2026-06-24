@@ -11,9 +11,9 @@ const linkButtonStyle: React.CSSProperties = {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: '36px',
-  height: '36px',
-  borderRadius: '8px',
+  width: '30px',
+  height: '30px',
+  borderRadius: '0px',
   background: 'transparent',
   color: '#0f172a',
   textDecoration: 'none',
@@ -21,13 +21,13 @@ const linkButtonStyle: React.CSSProperties = {
 };
 
 const iconStyle: React.CSSProperties = {
-  width: '22px',
-  height: '22px',
+  width: '30px',
+  height: '30px',
   display: 'block',
 };
 
 const ProjectLinks: React.FC<ProjectLinksProps> = ({ steam, itch }) => (
-  <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', justifyContent: 'center', marginTop: '1rem', marginBottom: '1.5rem' }}>
+  <div style={{ display: 'flex', gap: '1.6rem', alignItems: 'center', justifyContent: 'center', marginTop: '0rem', marginBottom: '0rem' }}>
     {steam && (
       <a href={steam} target="_blank" rel="noopener noreferrer" title="View on Steam" style={linkButtonStyle}>
         <img src={steamLogo} alt="Steam" style={iconStyle} />
