@@ -19,7 +19,7 @@ import peter_rabbit from './assets/OUaS/peter_rabbit.png';
 
 interface ProjectPoint {
     title: string;
-    body: string;
+    body: string[];
     image?: Graphic;
 }
 
@@ -34,7 +34,6 @@ interface Project {
   description: string;
   image: string;
   titleGraphic?: string;
-  features: string[];
   color?: string;
   links?: {
     steam?: string;
@@ -50,21 +49,25 @@ const projects: Project[] = [
     description: 'Challenge the hares once again in this roguelike fairy tale racer.',
     image: ouas_showcase,
     titleGraphic: ouas_title,
-    features: ['Responsive design', 'Project spotlight carousel', 'Scroll snap sections'],
     color: '#cff3c6',
     links: {itch: 'https://razzledazzle-studio.itch.io/once-upon-a-shell', steam: 'https://store.steampowered.com/app/4107970/Once_Upon_a_Shell/'},
     points: [{
             title: "Overview",
-            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            body: ["Once Upon a Shell is a roguelike fairy tale racer where you, as a tortoise, once again challenge the hares to a contest of speed. You must build up speed by sliding down hills to have a chance to beat the much faster hares. It was made in 7 weeks by a team of 13 people as part of the DADIU program."],
             image: { type: 'youtube', src: 'hUoZwh0RoH4' },
         }, {
             title: "Ideation",
-            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            body: [
+              "Ideation often gets neglected or rushed in game development — especially when teams are pressed for time. However,  I believe that cutting corners in the fundamentals only ends up costing far more time in the long run. That is why I alloted a full week of our 7 week production schedule solely to the ideation.",
+              "Here, my goal was to provide as little structure as necessary, and to nurture as healthy and curious an environment as possible in order to develop and explore our concept in as much depth as we reasonably could. Designers had the opportunity to play with and develop their prototypes and systems, programmers had the chance to test and development their mechanics and systems without having to worry for code quality or future-proofing, and artists got to develop concept art and explore varying art styles and aesthetics, all of them free of any expected deliverables.",
+              "In order to facilitate this, I organized small activities to challenge our ideas and stimulate the team's creativity. Already at this state, I set up playtests with people from outside the team on both our paper prototypes and our digital prototypes, in order to test our mechanics and get feedback on our ideas. I also organized a visit to our local library, to explore how childrens stories and fairy tales are typically told, both in their art style and narrative approach, and how they invoke emotions in people. While this primarily for the benefits of the artists, I made sure to bring people from all departments, as I believe inspiration can come from anywhere.",
+              "While it is difficult to speak for the efficacy of preventative measures, I believe that this week of ideation was crucial to the success of our project. It allowed us to explore our ideas in depth, and to develop a strong foundation for our game. It also allowed us to identify potential problems and challenges early on, and to address them before they became major issues.",
+            ],
             image: { type: 'image', src: peter_rabbit },
         }, {
-            title: "Ideation",
-            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
-            image: { type: 'image', src: ouas_showcase },
+            title: "Emotion Based Creation Pipeline",
+            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
+            image: { type: 'image', src: ouas_main },
   }]
   },
   {
@@ -73,20 +76,19 @@ const projects: Project[] = [
     description: 'A Nordic game jam game where you devour the solar system as a nascent black hole.',
     image: shaemmy_showcase,
     titleGraphic: shaemmy_title,
-    features: ['Interactive product cards', 'Minimal checkout layout', 'Fast animations'],
     color: '#caecef',
     links: {itch: 'https://hexfall.itch.io/shaemmy'},
     points: [{
             title: "Overview",
-            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            body: ["Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms."],
             image: { type: 'image', src: shaemmy_main },
         }, {
             title: "Gameplay",
-            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            body: ["Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors."],
             image: { type: 'image', src: shaemmy_main },
         }, {
             title: "Ideation",
-            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
+            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
             image: { type: 'image', src: shaemmy_main },
   }]
   },
@@ -96,20 +98,19 @@ const projects: Project[] = [
     description: 'A vertical slice of a playful third-person exploration game set in a tiny open world built on cans.',
     image: cank_showcase,
     titleGraphic: cank_title,
-    features: ['Story-driven pages', 'Photo-rich design', 'Map and itinerary view'],
     color: '#efbdb1',
     links: {itch: 'https://razzledazzle-studio.itch.io/cank'},
     points: [{
             title: "Overview",
-            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            body: ["Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms."],
             image: { type: 'image', src: cank_main },
         }, {
             title: "Gameplay",
-            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            body: ["Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors."],
             image: { type: 'image', src: cank_main },
         }, {
             title: "Ideation",
-            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
+            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
             image: { type: 'image', src: cank_main },
   }]
   },
@@ -119,20 +120,19 @@ const projects: Project[] = [
     description: 'A story-focused journey through fate and freedom.',
     image: chibo_showcase,
     titleGraphic: chibo_title,
-    features: ['Data visualizations', 'Clean card layout', 'Multiple device support'],
     color: '#ffd6ad',
     links: {itch: 'https://simmix-dev.itch.io/chibo-journey-of-fate'},
     points: [{
             title: "Overview",
-            body: "Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms.",
+            body: ["Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms."],
             image: { type: 'youtube', src: 'MxJ5GkymzOs' },
         }, {
             title: "Gameplay",
-            body: "Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.",
+            body: ["Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors."],
             image: { type: 'image', src: chibo_main },
         }, {
             title: "Ideation",
-            body: "Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent.",
+            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
             image: { type: 'image', src: chibo_main },
   }]
   },
@@ -550,7 +550,11 @@ const Portfolio: React.FC = () => {
                   >
                     <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                       <h1 style={{ margin: '0.5rem', textAlign: 'center', color: '#0f172a' }}>{pt.title}</h1>
-                      <p style={{ margin: '0 0 1rem 0', lineHeight: 1.8 }}>{pt.body}</p>
+                      {pt.body.map((text, index) => (
+                        <p key={index} style={{ margin: '0 0 1rem 0', lineHeight: 1.8 }}>
+                          {text}
+                        </p>
+                      ))}
                     </div>
                     <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', justifyContent: 'center' }}>
                       {pt.image?.type === 'youtube' ? (
