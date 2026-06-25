@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ouas_showcase from './assets/OUaS/gameplay_gif.gif';
+import ouas_showcase from './assets/OUaS/gameplay_gif.webm';
 import ouas_title from './assets/OUaS/OUaS - Title.png';
 import ouas_main from './assets/OUaS/OUaS - Showcase.png';
-import shaemmy_showcase from './assets/Shaemmy/Shaemmy - gameplay.gif';
+import shaemmy_showcase from './assets/Shaemmy/Shaemmy - gameplay.webm';
 import shaemmy_main from './assets/Shaemmy/Shaemmy - Showcase.png';
 import shaemmy_title from './assets/Shaemmy/Shaemmy - Title.png';
-import cank_showcase from './assets/CANK/CANK - gameplay.gif';
+import cank_showcase from './assets/CANK/CANK - gameplay.webm';
 import cank_main from './assets/CANK/CANK - Showcase.png';
 import cank_title from './assets/CANK/CANK - Title.png';
-import chibo_showcase from './assets/Chibo/Chibo - gameplay.gif';
+import chibo_showcase from './assets/Chibo/Chibo - gameplay.webm';
 import chibo_main from './assets/Chibo/Chibo - Showcase.png';
 import chibo_title from './assets/Chibo/Chibo - Title.png';
 import home_icon from './assets/home.svg';
@@ -167,7 +167,7 @@ const Portfolio: React.FC = () => {
     setTimerResetKey((prev) => prev + 1);
   };
 
-  const showcaseImgRef = useRef<HTMLImageElement | null>(null);
+  const showcaseImgRef = useRef<HTMLVideoElement | null>(null);
   const showcaseOverlayRef = useRef<HTMLDivElement | null>(null);
   const prevIndexRef = useRef(0);
 
@@ -426,10 +426,13 @@ const Portfolio: React.FC = () => {
                 cursor: 'pointer',
               }}
             >
-              <img
+              <video
                 src={projects[displayedIndex].image}
-                alt={projects[displayedIndex].title}
                 ref={showcaseImgRef}
+                autoPlay
+                loop
+                muted
+                playsInline
                 style={{ width: '100%', height: '600px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
               />
               <div
