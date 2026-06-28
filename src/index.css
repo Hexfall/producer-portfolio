@@ -134,6 +134,8 @@ code {
 
 @media (max-width: 768px) {
   .topbar { display: none; }
+  /* Hide the large page header on mobile by default */
+  header { display: none !important; }
   .burger-btn {
     display: inline-flex;
     position: fixed;
