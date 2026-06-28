@@ -12,6 +12,7 @@ import chibo_showcase from './assets/Chibo/Chibo - gameplay.webm';
 import chibo_main from './assets/Chibo/Chibo - Showcase.png';
 import chibo_title from './assets/Chibo/Chibo - Title.png';
 import home_icon from './assets/home.svg';
+import burger_icon from './assets/burger-icon.svg';
 import photo from './assets/photo.jpg';
 import ConnectModal from './components/ConnectModal';
 import ProjectLinks from './components/ProjectLinks';
@@ -144,6 +145,7 @@ const Portfolio: React.FC = () => {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [timerResetKey, setTimerResetKey] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement | null>(null);
 
@@ -277,7 +279,17 @@ const Portfolio: React.FC = () => {
         color: '#f8fafc',
       }}
     >
+      <button
+        className="burger-btn"
+        type="button"
+        aria-label="Open menu"
+        onClick={() => setMobileMenuOpen(true)}
+      >
+        <img src={burger_icon} alt="menu" style={{ width: 22, height: 22, display: 'block' }} />
+      </button>
+
       <div
+        className="topbar"
         style={{
           position: 'sticky',
           top: 0,
@@ -368,6 +380,62 @@ const Portfolio: React.FC = () => {
           </button>
         </div>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="mobile-overlay" role="dialog" aria-modal="true">
+          <button type="button" className="mobile-close" aria-label="Close menu" onClick={() => setMobileMenuOpen(false)}>×</button>
+          <div className="nav-items" style={{ width: '100%' }}>
+            <button
+              type="button"
+              onClick={() => {
+                setActiveSectionIndex(-1);
+                headerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setMobileMenuOpen(false);
+              }}
+              style={{ textAlign: 'center' }}
+            >
+              Home
+            </button>
+
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                onClick={() => {
+                  scrollToProject(index);
+                  setMobileMenuOpen(false);
+                }}
+              >
+                {project.title}
+              </button>
+            ))}
+          </div>
+
+          <div className="mobile-connect">
+            <button
+              type="button"
+              onClick={() => {
+                setShowConnectModal(true);
+                setMobileMenuOpen(false);
+              }}
+              style={{
+                padding: '0.6rem 1.1rem',
+                borderRadius: '999px',
+                border: 'none',
+                background: '#38bdf8',
+                color: '#0f172a',
+                cursor: 'pointer',
+                fontSize: '1rem',
+              }}
+            >
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}>
+                <img src={photo} alt="Viktor" style={{ width: 28, height: 28, borderRadius: '999px', objectFit: 'cover' }} />
+                Connect
+              </span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {showConnectModal && <ConnectModal onClose={() => setShowConnectModal(false)} />}
 
