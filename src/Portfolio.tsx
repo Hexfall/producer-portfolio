@@ -374,14 +374,14 @@ const Portfolio: React.FC = () => {
             <button
               type="button"
               style={{
-                height: '5 rem',
+                height: '5rem',
                 padding: '0 0.6rem',
                 borderRadius: '1rem',
-                border: 0 === activeSectionIndex ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
-                background: 0 === activeSectionIndex ? 'rgba(56,189,248,0.16)' : 'transparent',
-                color: 0 === activeSectionIndex ? '#38bdf8' : '#f8fafc',
+                border: -1 === activeSectionIndex ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
+                background: -1 === activeSectionIndex ? 'rgba(56,189,248,0.16)' : 'transparent',
+                color: -1 === activeSectionIndex ? '#38bdf8' : '#f8fafc',
                 fontSize: '0.9rem',
-                fontWeight: 0 === activeSectionIndex ? 600 : 500,
+                fontWeight: -1 === activeSectionIndex ? 600 : 500,
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -394,7 +394,7 @@ const Portfolio: React.FC = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              <img src={home_icon} alt="Home" style={{ width: '100%', maxHeight: '5 rem', display: 'block' }} />
+              <img src={home_icon} alt="Home" style={{ width: '100%', maxHeight: '80%', display: 'block' }} />
             </button>
 
             {projects.map((project, index) => (
@@ -485,30 +485,6 @@ const Portfolio: React.FC = () => {
           <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', margin: '0rem' }}>Game Producer</h2>
         <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', maxHeight: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '80%', maxWidth: '1920px' }}>
-            <button
-              type="button"
-              onClick={handlePrevProject}
-              aria-label="Previous project"
-              style={{
-                flexShrink: 0,
-                width: '2.5rem',
-                height: '2.5rem',
-                borderRadius: '999px',
-                border: 'none',
-                background: 'rgba(255, 255, 255, 0.15)',
-                color: '#f1f5f9',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.25rem',
-                transition: 'background 200ms ease',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)')}
-            >
-              ←
-            </button>
             <div
               onClick={() => scrollToProject(activeIndex)}
               role="button"
@@ -529,7 +505,7 @@ const Portfolio: React.FC = () => {
                 loop
                 muted
                 playsInline
-                style={{ width: '100%', height: '600px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
+                style={{ width: '100%', minHeight: '350px', maxHeight: '600px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
               />
               <div
                 style={{
@@ -546,12 +522,56 @@ const Portfolio: React.FC = () => {
                 <p style={{ margin: '0.5rem 0 0', opacity: 0.9 }}>{projects[displayedIndex].description}</p>
               </div>
             </div>
+          </div>
+          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', justifyContent: 'center' }}>
+            <button
+              type="button"
+              onClick={handlePrevProject}
+              aria-label="Previous project"
+              style={{
+                flexShrink: 0,
+                marginRight: '0.8rem',
+                width: '2.5rem',
+                height: '2.5rem',
+                borderRadius: '999px',
+                border: 'none',
+                background: 'rgba(255, 255, 255, 0.15)',
+                color: '#f1f5f9',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.25rem',
+                transition: 'background 200ms ease',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)')}
+            >
+              ←
+            </button>
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                onClick={() => handleDotClick(index)}
+                aria-label={`Showcase ${project.title}`}
+                style={{
+                  width: '0.85rem',
+                  height: '0.85rem',
+                  borderRadius: '999px',
+                  border: 'none',
+                  background: index === activeIndex ? '#38bdf8' : '#334155',
+                  cursor: 'pointer',
+                }}
+              />
+            ))}
             <button
               type="button"
               onClick={handleNextProject}
               aria-label="Next project"
               style={{
                 flexShrink: 0,
+                marginLeft: '0.8rem',
                 width: '2.5rem',
                 height: '2.5rem',
                 borderRadius: '999px',
@@ -570,24 +590,6 @@ const Portfolio: React.FC = () => {
             >
               →
             </button>
-          </div>
-          <div style={{ display: 'flex', gap: '0.6rem' }}>
-            {projects.map((project, index) => (
-              <button
-                key={project.id}
-                type="button"
-                onClick={() => handleDotClick(index)}
-                aria-label={`Showcase ${project.title}`}
-                style={{
-                  width: '0.85rem',
-                  height: '0.85rem',
-                  borderRadius: '999px',
-                  border: 'none',
-                  background: index === activeIndex ? '#38bdf8' : '#334155',
-                  cursor: 'pointer',
-                }}
-              />
-            ))}
           </div>
           <p style={{ letterSpacing: '0.35em', textTransform: 'uppercase', opacity: 0.8, fontSize: '0.8rem' }}>Portfolio Showcase</p>
         </div>
