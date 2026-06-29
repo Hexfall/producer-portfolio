@@ -15,7 +15,12 @@ import home_icon from './assets/home.svg';
 import photo from './assets/photo.jpg';
 import ConnectModal from './components/ConnectModal';
 import ProjectLinks from './components/ProjectLinks';
+import ProjectInfo from './components/ProjectInfo';
 import peter_rabbit from './assets/OUaS/peter_rabbit.png';
+
+import duration_icon from './assets/stopwatch.svg';
+import people_icon from './assets/people.svg';
+import calendar_icon from './assets/calendar.svg';
 
 interface ProjectPoint {
     title: string;
@@ -39,6 +44,11 @@ interface Project {
     steam?: string;
     itch?: string;
   };
+  info: {
+    duration: string;
+    teamSize: number;
+    year: string;
+  }
   points: ProjectPoint[];
 }
 
@@ -58,17 +68,20 @@ const projects: Project[] = [
         }, {
             title: "Ideation",
             body: [
-              "Ideation often gets neglected or rushed in game development — especially when teams are pressed for time. However,  I believe that cutting corners in the fundamentals only ends up costing far more time in the long run. That is why I alloted a full week of our 7 week production schedule solely to the ideation.",
-              "Here, my goal was to provide as little structure as necessary, and to nurture as healthy and curious an environment as possible in order to develop and explore our concept in as much depth as we reasonably could. Designers had the opportunity to play with and develop their prototypes and systems, programmers had the chance to test and development their mechanics and systems without having to worry for code quality or future-proofing, and artists got to develop concept art and explore varying art styles and aesthetics, all of them free of any expected deliverables.",
-              "In order to facilitate this, I organized small activities to challenge our ideas and stimulate the team's creativity. Already at this state, I set up playtests with people from outside the team on both our paper prototypes and our digital prototypes, in order to test our mechanics and get feedback on our ideas. I also organized a visit to our local library, to explore how childrens stories and fairy tales are typically told, both in their art style and narrative approach, and how they invoke emotions in people. While this primarily for the benefits of the artists, I made sure to bring people from all departments, as I believe inspiration can come from anywhere.",
-              "While it is difficult to speak for the efficacy of preventative measures, I believe that this week of ideation was crucial to the success of our project. It allowed us to explore our ideas in depth, and to develop a strong foundation for our game. It also allowed us to identify potential problems and challenges early on, and to address them before they became major issues.",
+              "I believe that strong projects are built on strong foundations. That is why I alloted a full week of our 7 week production schedule solely to ideation. Here, my goal was to nurture an open and curious atmosphere to develop our base concept as much as reasonably possible. Programmers, artists, and designers alike got to throw caution to the wind and throw anything at the wall to see what stuck without having to worry about future-proofing or deliverables.",
+              "To further facilitate creativity, I organized small activities to challenge our ideas and ways of thinking. Already at this stage, I set up playtests with people from outside the team on our digital and paper prototypes to test mechanics and get feedback on our ideas. I organized a visit to our local library, so we could explore how fairy tales are typically told and in search of unorthodox inspiration. At every step, I emphasized keeping a wide breath of our team involved, as I believe that great ideas come from diverse sources.",
             ],
             image: { type: 'image', src: peter_rabbit },
         }, {
             title: "Emotion Based Creation Pipeline",
             body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
             image: { type: 'image', src: ouas_main },
-  }]
+    }],
+    info: {
+      duration: "7 weeks",
+      teamSize: 13,
+      year: "2025",
+    },
   },
   {
     id: 2,
@@ -90,7 +103,12 @@ const projects: Project[] = [
             title: "Ideation",
             body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
             image: { type: 'image', src: shaemmy_main },
-  }]
+    }],
+    info: {
+      duration: "2 days",
+      teamSize: 10,
+      year: "2026",
+    },
   },
   {
     id: 3,
@@ -112,7 +130,12 @@ const projects: Project[] = [
             title: "Ideation",
             body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
             image: { type: 'image', src: cank_main },
-  }]
+    }],
+    info: {
+      duration: "3 weeks",
+      teamSize: 13,
+      year: "2025",
+    },
   },
   {
     id: 4,
@@ -134,7 +157,12 @@ const projects: Project[] = [
             title: "Ideation",
             body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
             image: { type: 'image', src: chibo_main },
-  }]
+    }],
+    info: {
+      duration: "15 weeks",
+      teamSize: 7,
+      year: "2025",
+    },
   },
 ];
 
@@ -516,7 +544,6 @@ const Portfolio: React.FC = () => {
           }}
         >
           <div style={{ maxWidth: '1920px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <span style={{ textTransform: 'uppercase', letterSpacing: '0.3em', fontSize: '0.8rem', opacity: 0.8 }}>Project detail</span>
             {project.titleGraphic ? (
               <div style={{ width: '100%', maxWidth: '1680px', height: '360px', margin: '1rem auto 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img
@@ -528,7 +555,13 @@ const Portfolio: React.FC = () => {
             ) : (
               <h2 style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', margin: '1rem 0 0 0' }}>{project.title}</h2>
             )}
-            <ProjectLinks steam={project.links?.steam} itch={project.links?.itch} />
+            <div style={{ display: 'flex', gap: '1.6rem', alignItems: 'start', justifyContent: 'center', marginTop: '0rem', marginBottom: '0rem' }}>
+              <ProjectLinks steam={project.links?.steam} itch={project.links?.itch} />
+              <hr style={{color: '#000000', height: '16px'}} />
+              <ProjectInfo icon={calendar_icon} title={project.info?.year} />
+              <ProjectInfo icon={duration_icon} title={project.info?.duration} />
+              <ProjectInfo icon={people_icon} title={project.info?.teamSize} />
+            </div>
 
             {/* Points placed under title/description and centered */}
             <div style={{ width: '100%', margin: '1.5rem auto 0', display: 'flex', flexDirection: 'column', gap: '3.25rem', alignItems: 'center' }}>
@@ -571,7 +604,7 @@ const Portfolio: React.FC = () => {
                           />
                         </div>
                       ) : (
-                        <img src={pt.image?.src || project.image} alt={pt.title} style={{ width: '100%', height: '100%', maxHeight: '420px', objectFit: 'cover', borderRadius: '0.75rem' }} />
+                        <img src={pt.image?.src || project.image} alt={pt.title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.75rem' }} />
                       )}
                     </div>
                   </div>
