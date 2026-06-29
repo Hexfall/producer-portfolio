@@ -12,6 +12,7 @@ import chibo_showcase from './assets/Chibo/Chibo - gameplay.webm';
 import chibo_main from './assets/Chibo/Chibo - Showcase.png';
 import chibo_title from './assets/Chibo/Chibo - Title.png';
 import home_icon from './assets/home.svg';
+import burger_icon from './assets/burger-icon.svg';
 import photo from './assets/photo.jpg';
 import ConnectModal from './components/ConnectModal';
 import ProjectLinks from './components/ProjectLinks';
@@ -172,6 +173,7 @@ const Portfolio: React.FC = () => {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [timerResetKey, setTimerResetKey] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement | null>(null);
 
@@ -305,20 +307,16 @@ const Portfolio: React.FC = () => {
         color: '#f8fafc',
       }}
     >
-      <div
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 20,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '1rem 2rem',
-          background: 'rgba(15,23,42,0.95)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(148,163,184,0.16)',
-        }}
+      <button
+        className="burger-btn"
+        type="button"
+        aria-label="Open menu"
+        onClick={() => setMobileMenuOpen(true)}
       >
+        <img src={burger_icon} alt="menu" style={{ width: 22, height: 22, display: 'block' }} />
+      </button>
+
+      <div className="topbar">
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <button
             type="button"
@@ -397,6 +395,104 @@ const Portfolio: React.FC = () => {
         </div>
       </div>
 
+      {mobileMenuOpen && (
+        <div className="mobile-overlay" role="dialog" aria-modal="true">
+          <button type="button" className="mobile-close" aria-label="Close menu" onClick={() => setMobileMenuOpen(false)}>×</button>
+          <div className="nav-items" style={{ width: '100%' }}>
+            <button
+              type="button"
+              style={{
+                height: '5rem',
+                padding: '0 0.6rem',
+                borderRadius: '1rem',
+                border: -1 === activeSectionIndex ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
+                background: -1 === activeSectionIndex ? 'rgba(56,189,248,0.16)' : 'transparent',
+                color: -1 === activeSectionIndex ? '#38bdf8' : '#f8fafc',
+                fontSize: '0.9rem',
+                fontWeight: -1 === activeSectionIndex ? 600 : 500,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+              }}
+              onClick={() => {
+                setActiveSectionIndex(-1);
+                headerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setMobileMenuOpen(false);
+              }}
+            >
+              <img src={home_icon} alt="Home" style={{ width: '100%', maxHeight: '80%', display: 'block' }} />
+            </button>
+
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                style={{
+                  height: '5rem',
+                  padding: '0 0.6rem',
+                  borderRadius: '1rem',
+                  border: index === activeSectionIndex ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
+                  background: index === activeSectionIndex ? 'rgba(56,189,248,0.16)' : 'transparent',
+                  color: index === activeSectionIndex ? '#38bdf8' : '#f8fafc',
+                  fontSize: '0.9rem',
+                  fontWeight: index === activeSectionIndex ? 600 : 500,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onClick={() => {
+                  scrollToProject(index);
+                  setMobileMenuOpen(false);
+                }}
+              >
+                {project.titleGraphic ? (
+                  <img
+                    src={project.titleGraphic}
+                    alt={project.title}
+                    style={{
+                      width: '100%', 
+                      maxHeight: '80%', 
+                      objectFit: 'contain', 
+                      display: 'block', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                    }}/>
+                ) : (
+                  project.title
+                )}
+              </button>
+            ))}
+          </div>
+
+          <div className="mobile-connect">
+            <button
+              type="button"
+              onClick={() => {
+                setShowConnectModal(true);
+                setMobileMenuOpen(false);
+              }}
+              style={{
+                padding: '0.6rem 1.1rem',
+                borderRadius: '999px',
+                border: 'none',
+                background: '#38bdf8',
+                color: '#0f172a',
+                cursor: 'pointer',
+                fontSize: '1rem',
+              }}
+            >
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}>
+                <img src={photo} alt="Viktor" style={{ width: 28, height: 28, borderRadius: '999px', objectFit: 'cover' }} />
+                Connect
+              </span>
+            </button>
+          </div>
+        </div>
+      )}
+
       {showConnectModal && <ConnectModal onClose={() => setShowConnectModal(false)} />}
 
       <header
@@ -415,32 +511,8 @@ const Portfolio: React.FC = () => {
       >
           <h1 style={{ textAlign: 'center', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)', margin: '0.2rem' }}>Viktor Máni Mønster</h1>
           <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', margin: '0rem' }}>Game Producer</h2>
-        <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+        <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', maxHeight: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '80%', maxWidth: '1920px' }}>
-            <button
-              type="button"
-              onClick={handlePrevProject}
-              aria-label="Previous project"
-              style={{
-                flexShrink: 0,
-                width: '2.5rem',
-                height: '2.5rem',
-                borderRadius: '999px',
-                border: 'none',
-                background: 'rgba(255, 255, 255, 0.15)',
-                color: '#f1f5f9',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.25rem',
-                transition: 'background 200ms ease',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)')}
-            >
-              ←
-            </button>
             <div
               onClick={() => scrollToProject(activeIndex)}
               role="button"
@@ -461,7 +533,7 @@ const Portfolio: React.FC = () => {
                 loop
                 muted
                 playsInline
-                style={{ width: '100%', height: '600px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
+                style={{ width: '100%', minHeight: '350px', maxHeight: '600px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
               />
               <div
                 style={{
@@ -478,12 +550,56 @@ const Portfolio: React.FC = () => {
                 <p style={{ margin: '0.5rem 0 0', opacity: 0.9 }}>{projects[displayedIndex].description}</p>
               </div>
             </div>
+          </div>
+          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', justifyContent: 'center' }}>
+            <button
+              type="button"
+              onClick={handlePrevProject}
+              aria-label="Previous project"
+              style={{
+                flexShrink: 0,
+                marginRight: '0.8rem',
+                width: '2.5rem',
+                height: '2.5rem',
+                borderRadius: '999px',
+                border: 'none',
+                background: 'rgba(255, 255, 255, 0.15)',
+                color: '#f1f5f9',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.25rem',
+                transition: 'background 200ms ease',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)')}
+            >
+              ←
+            </button>
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                onClick={() => handleDotClick(index)}
+                aria-label={`Showcase ${project.title}`}
+                style={{
+                  width: '0.85rem',
+                  height: '0.85rem',
+                  borderRadius: '999px',
+                  border: 'none',
+                  background: index === activeIndex ? '#38bdf8' : '#334155',
+                  cursor: 'pointer',
+                }}
+              />
+            ))}
             <button
               type="button"
               onClick={handleNextProject}
               aria-label="Next project"
               style={{
                 flexShrink: 0,
+                marginLeft: '0.8rem',
                 width: '2.5rem',
                 height: '2.5rem',
                 borderRadius: '999px',
@@ -502,24 +618,6 @@ const Portfolio: React.FC = () => {
             >
               →
             </button>
-          </div>
-          <div style={{ display: 'flex', gap: '0.6rem' }}>
-            {projects.map((project, index) => (
-              <button
-                key={project.id}
-                type="button"
-                onClick={() => handleDotClick(index)}
-                aria-label={`Showcase ${project.title}`}
-                style={{
-                  width: '0.85rem',
-                  height: '0.85rem',
-                  borderRadius: '999px',
-                  border: 'none',
-                  background: index === activeIndex ? '#38bdf8' : '#334155',
-                  cursor: 'pointer',
-                }}
-              />
-            ))}
           </div>
           <p style={{ letterSpacing: '0.35em', textTransform: 'uppercase', opacity: 0.8, fontSize: '0.8rem' }}>Portfolio Showcase</p>
         </div>
