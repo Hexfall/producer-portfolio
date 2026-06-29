@@ -288,21 +288,7 @@ const Portfolio: React.FC = () => {
         <img src={burger_icon} alt="menu" style={{ width: 22, height: 22, display: 'block' }} />
       </button>
 
-      <div
-        className="topbar"
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 20,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '1rem 2rem',
-          background: 'rgba(15,23,42,0.95)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(148,163,184,0.16)',
-        }}
-      >
+      <div className="topbar">
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <button
             type="button"
@@ -387,26 +373,68 @@ const Portfolio: React.FC = () => {
           <div className="nav-items" style={{ width: '100%' }}>
             <button
               type="button"
+              style={{
+                height: '5 rem',
+                padding: '0 0.6rem',
+                borderRadius: '1rem',
+                border: 0 === activeSectionIndex ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
+                background: 0 === activeSectionIndex ? 'rgba(56,189,248,0.16)' : 'transparent',
+                color: 0 === activeSectionIndex ? '#38bdf8' : '#f8fafc',
+                fontSize: '0.9rem',
+                fontWeight: 0 === activeSectionIndex ? 600 : 500,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+              }}
               onClick={() => {
                 setActiveSectionIndex(-1);
                 headerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 setMobileMenuOpen(false);
               }}
-              style={{ textAlign: 'center' }}
             >
-              Home
+              <img src={home_icon} alt="Home" style={{ width: '100%', maxHeight: '5 rem', display: 'block' }} />
             </button>
 
             {projects.map((project, index) => (
               <button
                 key={project.id}
                 type="button"
+                style={{
+                  height: '5rem',
+                  padding: '0 0.6rem',
+                  borderRadius: '1rem',
+                  border: index === activeSectionIndex ? '1px solid #38bdf8' : '1px solid rgba(148,163,184,0.24)',
+                  background: index === activeSectionIndex ? 'rgba(56,189,248,0.16)' : 'transparent',
+                  color: index === activeSectionIndex ? '#38bdf8' : '#f8fafc',
+                  fontSize: '0.9rem',
+                  fontWeight: index === activeSectionIndex ? 600 : 500,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
                 onClick={() => {
                   scrollToProject(index);
                   setMobileMenuOpen(false);
                 }}
               >
-                {project.title}
+                {project.titleGraphic ? (
+                  <img
+                    src={project.titleGraphic}
+                    alt={project.title}
+                    style={{
+                      width: '100%', 
+                      maxHeight: '80%', 
+                      objectFit: 'contain', 
+                      display: 'block', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                    }}/>
+                ) : (
+                  project.title
+                )}
               </button>
             ))}
           </div>
@@ -455,7 +483,7 @@ const Portfolio: React.FC = () => {
       >
           <h1 style={{ textAlign: 'center', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)', margin: '0.2rem' }}>Viktor Máni Mønster</h1>
           <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', margin: '0rem' }}>Game Producer</h2>
-        <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+        <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', maxHeight: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '80%', maxWidth: '1920px' }}>
             <button
               type="button"
