@@ -1,0 +1,39 @@
+import type { Project } from "../types/Project";
+
+import ouas_showcase from '../assets/OUaS/gameplay_gif.webm';
+import ouas_title from '../assets/OUaS/OUaS - Title.png';
+import ouas_main from '../assets/OUaS/OUaS - Showcase.png';
+import peter_rabbit from '../assets/OUaS/peter_rabbit.png';
+
+const OUaS: Project = {
+    id: 1,
+    title: 'Once Upon a Shell',
+    description: 'Challenge the hares once again in this roguelike fairy tale racer.',
+    image: ouas_showcase,
+    titleGraphic: ouas_title,
+    color: '#cff3c6',
+    links: {itch: 'https://razzledazzle-studio.itch.io/once-upon-a-shell', steam: 'https://store.steampowered.com/app/4107970/Once_Upon_a_Shell/'},
+    points: [{
+            title: "Overview",
+            body: ["Once Upon a Shell is a roguelike fairy tale racer where you, as a tortoise, once again challenge the hares to a contest of speed. You must build up speed by sliding down hills to have a chance to beat the much faster hares. It was made in 7 weeks by a team of 13 people as part of the DADIU program."],
+            image: { type: 'youtube', src: 'hUoZwh0RoH4' },
+        }, {
+            title: "Ideation",
+            body: [
+                "I believe that strong projects are built on strong foundations. That is why I alloted a full week of our 7 week production schedule solely to ideation. Here, my goal was to nurture an open and curious atmosphere to develop our base concept as much as reasonably possible. Programmers, artists, and designers alike got to throw caution to the wind and throw anything at the wall to see what stuck without having to worry about future-proofing or deliverables.",
+                "To further facilitate creativity, I organized small activities to challenge our ideas and ways of thinking. Already at this stage, I set up playtests with people from outside the team on our digital and paper prototypes to test mechanics and get feedback on our ideas. I organized a visit to our local library, so we could explore how fairy tales are typically told and in search of unorthodox inspiration. At every step, I emphasized keeping a wide breath of our team involved, as I believe that great ideas come from diverse sources.",
+            ],
+            image: { type: 'image', src: peter_rabbit },
+        }, {
+            title: "Emotion Based Creation Pipeline",
+            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
+            image: { type: 'image', src: ouas_main },
+    }],
+    info: {
+        duration: "7 weeks",
+        teamSize: 13,
+        year: "2025",
+    },
+}
+
+export default OUaS;
