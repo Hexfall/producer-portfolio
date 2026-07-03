@@ -569,10 +569,39 @@ const Portfolio: React.FC = () => {
                   </div>
                 );
               })}
+              {project.graphics && project.graphics.length > 0 && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem 12.5rem', justifyContent: 'center', marginTop: '2rem' }}>
+                  {project.graphics.map((graphic, gIndex) => (
+                    <div key={gIndex} style={{ width: '100%', maxWidth: '720px', background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden' }}>
+                      {graphic.type === 'youtube' ? (
+                        <iframe
+                          title={`${project.title} - graphic ${gIndex + 1}`}
+                          src={`https://www.youtube.com/embed/${graphic.src}`}
+                          style={{ width: '100%', height: '100%', border: 0 }}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      ) : graphic.type === 'video' ? (
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          title={`${project.title} - graphic ${gIndex + 1}`}
+                          src={graphic.src}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <img src={graphic.src} alt={`${project.title} - graphic ${gIndex + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', backgroundColor: 'transparent' }} />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           {/* Spacing below projects, so they don't move along too quick */}
-          { project.id !== projects.length ? (<div style={{ width: '100%', height: '40rem' }} />) : (null) }
+          { index !== projects.length - 1 ? (<div style={{ width: '100%', height: '40rem' }} />) : (null) }
         </section>
       ))}
     </div>

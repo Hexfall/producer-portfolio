@@ -2,10 +2,13 @@ import type { Project } from "../types/Project";
 
 import ouas_showcase from '../assets/OUaS/gameplay_gif.webm';
 import ouas_title from '../assets/OUaS/OUaS - Title.png';
-/*import ouas_main from '../assets/OUaS/OUaS - Showcase.png';*/
+import ouas_main from '../assets/OUaS/OUaS - Showcase.png';
 import ouas_lods from '../assets/OUaS/OUaS - LoDs.png';
 import peter_rabbit from '../assets/OUaS/peter_rabbit.png';
 import ouas_bridge from '../assets/OUaS/OUaS - Bridge Jump.webm';
+import ouas_small_run from '../assets/OUaS/OUaS - small run.webm';
+import ouas_upgrades from '../assets/OUaS/OUaS - Upgrades.png';
+import ouas_story_book from '../assets/OUaS/OUaS - Book.png';
 
 const OUaS: Project = {
     id: 1,
@@ -36,7 +39,7 @@ const OUaS: Project = {
         }, {
             title: "A Proactive Approach to Conflict",
             body: [
-                "Game development is a creative contact sport. Butting heads is not only to be expected, but should be encouraged, as ideas are improved when challenged. The question as a producer then, is how to cultivate an environment in which people can safely engage in discourse without it spilling over into real conflict. Team Contract and discussing our roles and shit early to avoid later issues. RACI.",
+                "Game development is a creative contact sport. Butting heads is not only to be expected, but should be encouraged, as ideas are improved when challenged. As a producer then, the question is how to cultivate an environment in which people can safely engage in discourse without it spilling over into real conflict. Team Contract and discussing our roles and shit early to avoid later issues. RACI.",
                 "But even if we set up guardrails, conflict is inevitable. Non-violent communication and spotting problems early without being afraid to confront them.",
             ],
             image: { type: 'video', src: ouas_bridge },
@@ -46,6 +49,13 @@ const OUaS: Project = {
         teamSize: 13,
         year: "2025",
     },
+    graphics: [
+        { type: 'image', src: ouas_main },
+        { type: 'video', src: ouas_small_run },
+        { type: 'image', src: ouas_story_book },
+        { type: 'video', src: ouas_showcase },
+        { type: 'image', src: ouas_upgrades },
+    ],
 }
 
 export default OUaS;

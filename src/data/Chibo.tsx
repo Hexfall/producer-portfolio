@@ -30,6 +30,9 @@ const Chibo: Project = {
         teamSize: 7,
         year: "2025",
     },
+    graphics: [
+        { type: 'video', src: chibo_showcase },
+    ],
 }
 
 export default Chibo;

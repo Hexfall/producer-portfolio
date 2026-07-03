@@ -26,4 +26,5 @@ export interface Project {
     year: string;
   }
   points: ProjectPoint[];
+  graphics?: Graphic[];
 }
