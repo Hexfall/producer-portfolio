@@ -226,15 +226,17 @@ const Portfolio: React.FC = () => {
               color: '#0f172a',
               cursor: 'pointer',
               fontSize: '0.95rem',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            <span style={{display: 'inline-flex', alignItems: 'center', gap: '0.6rem'}}>
+            <span style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem'}}>
               <img
                 src={photo}
                 alt="Viktor"
-                style={{width: '32px', height: '32px', borderRadius: '999px', objectFit: 'cover', flexShrink: 0}}
+                style={{width: '32px', height: '32px', borderRadius: '999px', objectFit: 'cover', flexShrink: 0, marginTop: '2px'}}
               />
-              Connect
+              About me
             </span>
           </button>
         </div>
@@ -488,22 +490,24 @@ const Portfolio: React.FC = () => {
         >
           <div style={{ maxWidth: '1920px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {project.titleGraphic ? (
-              <div style={{ width: '100%', maxWidth: '1680px', height: '360px', margin: '1rem auto 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '100%', maxWidth: '1680px', maxHeight: '360px', margin: '2rem 0 1rem 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img
                   src={project.titleGraphic}
                   alt={project.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+                  style={{ width: '100%', maxHeight: '360p', objectFit: 'scale-down', display: 'block' }}
                 />
               </div>
             ) : (
               <h2 style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', margin: '1rem 0 0 0' }}>{project.title}</h2>
             )}
-            <div style={{ display: 'flex', gap: '1.6rem', alignItems: 'start', justifyContent: 'center', marginTop: '0rem', marginBottom: '0rem' }}>
+            <div className="meta-info">
               <ProjectLinks steam={project.links?.steam} itch={project.links?.itch} />
-              <hr style={{color: '#000000', height: '16px'}} />
-              <ProjectInfo icon={calendar_icon} title={project.info?.year} />
-              <ProjectInfo icon={duration_icon} title={project.info?.duration} />
-              <ProjectInfo icon={people_icon} title={project.info?.teamSize} />
+              <hr className="meta-divider" style={{color: '#000000', height: '16px'}} />
+              <div style={{ display: 'flex', gap: '1.6rem', alignItems: 'start', justifyContent: 'center', marginTop: '0rem', marginBottom: '0rem' }}>
+                <ProjectInfo icon={calendar_icon} title={project.info?.year} />
+                <ProjectInfo icon={duration_icon} title={project.info?.duration} />
+                <ProjectInfo icon={people_icon} title={project.info?.teamSize} />
+              </div>
             </div>
 
             {/* Points placed under title/description and centered */}
@@ -544,6 +548,18 @@ const Portfolio: React.FC = () => {
                             style={{ width: '100%', height: '100%', border: 0 }}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
+                          />
+                        </div>
+                      ) : pt.image?.type === 'video' ? (
+                        <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
+                          <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            title={`${project.title} - ${pt.title} video`}
+                            src={pt.image.src}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                           />
                         </div>
                       ) : (

@@ -5,7 +5,7 @@ export interface ProjectPoint {
 }
 
 export interface Graphic {
-    type: 'image' | 'youtube';
+    type: 'image' | 'youtube' | 'video';
     src: string;
 }
 

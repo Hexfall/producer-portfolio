@@ -2,8 +2,10 @@ import type { Project } from "../types/Project";
 
 import ouas_showcase from '../assets/OUaS/gameplay_gif.webm';
 import ouas_title from '../assets/OUaS/OUaS - Title.png';
-import ouas_main from '../assets/OUaS/OUaS - Showcase.png';
+/*import ouas_main from '../assets/OUaS/OUaS - Showcase.png';*/
+import ouas_lods from '../assets/OUaS/OUaS - LoDs.png';
 import peter_rabbit from '../assets/OUaS/peter_rabbit.png';
+import ouas_bridge from '../assets/OUaS/OUaS - Bridge Jump.webm';
 
 const OUaS: Project = {
     id: 1,
@@ -18,16 +20,26 @@ const OUaS: Project = {
             body: ["Once Upon a Shell is a roguelike fairy tale racer where you, as a tortoise, once again challenge the hares to a contest of speed. You must build up speed by sliding down hills to have a chance to beat the much faster hares. It was made in 7 weeks by a team of 13 people as part of the DADIU program."],
             image: { type: 'youtube', src: 'hUoZwh0RoH4' },
         }, {
-            title: "Ideation",
+            title: "Laying Solid Groundwork",
             body: [
                 "I believe that strong projects are built on strong foundations. That is why I alloted a full week of our 7 week production schedule solely to ideation. Here, my goal was to nurture an open and curious atmosphere to develop our base concept as much as reasonably possible. Programmers, artists, and designers alike got to throw caution to the wind and throw anything at the wall to see what stuck without having to worry about future-proofing or deliverables.",
                 "To further facilitate creativity, I organized small activities to challenge our ideas and ways of thinking. Already at this stage, I set up playtests with people from outside the team on our digital and paper prototypes to test mechanics and get feedback on our ideas. I organized a visit to our local library, so we could explore how fairy tales are typically told and in search of unorthodox inspiration. At every step, I emphasized keeping a wide breath of our team involved, as I believe that great ideas come from diverse sources.",
             ],
             image: { type: 'image', src: peter_rabbit },
         }, {
-            title: "Emotion Based Creation Pipeline",
-            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
-            image: { type: 'image', src: ouas_main },
+            title: "Meaningful Milestones",
+            body: [
+                "Inspired by Sebastien Ebacher's Emotion Based Creation Pipeline framework, we developed a Level of Done system to align expectations across the team. Rooted in ",
+                "Settling on a target quality ahead of time also allowed us to better plan how we would spend our time and resources. For one, it set expectations from the team about the final quality of a feature, so they knew how much to invest into it ahead of time. Since our process involved us iterating through the levels, it also meant that we could schedule each step far ahead of time and evaluate the scope of our project and adapt in a reasonable time if we were falling behind.",
+            ],
+            image: { type: 'image', src: ouas_lods },
+        }, {
+            title: "A Proactive Approach to Conflict",
+            body: [
+                "Game development is a creative contact sport. Butting heads is not only to be expected, but should be encouraged, as ideas are improved when challenged. The question as a producer then, is how to cultivate an environment in which people can safely engage in discourse without it spilling over into real conflict. Team Contract and discussing our roles and shit early to avoid later issues. RACI.",
+                "But even if we set up guardrails, conflict is inevitable. Non-violent communication and spotting problems early without being afraid to confront them.",
+            ],
+            image: { type: 'video', src: ouas_bridge },
     }],
     info: {
         duration: "7 weeks",

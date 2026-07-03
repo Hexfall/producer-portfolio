@@ -7,9 +7,9 @@ import Chibo from "./Chibo";
 
 const projects: Project[] = [
     OUaS,
+    Chibo,
     Shaemmy,
     Cank,
-    Chibo,
 ];
 
 export default projects;

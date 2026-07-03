@@ -70,6 +70,7 @@ h2 {
   font-family: var(--heading);
   font-weight: 350;
   color: var(--text-h);
+  line-height: 100%;
 }
 
 h1 {
@@ -144,7 +145,17 @@ header {
   background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
 }
 
-@media (min-width: 769px) {
+.meta-info {
+  display: flex; 
+  flex-direction: row;
+  gap: 1.6rem;
+  align-items: start;
+  justify-content: center;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+@media (min-width: 1011px) {
   .burger-btn {
     display: none;
   }
@@ -166,18 +177,7 @@ header {
   }
 }
 
-@media (max-width: 768px) {
-  .topbar { display: none; }
-  
-  .burger-btn {
-    display: inline-flex;
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-   
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1010px) {
   .topbar { display: none; }
   
   .burger-btn {
