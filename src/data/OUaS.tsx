@@ -32,15 +32,15 @@ const OUaS: Project = {
         }, {
             title: "Meaningful Milestones",
             body: [
-                "Inspired by Sebastien Ebacher's Emotion Based Creation Pipeline framework, we developed a Level of Done system to align expectations across the team. Rooted in ",
-                "Settling on a target quality ahead of time also allowed us to better plan how we would spend our time and resources. For one, it set expectations from the team about the final quality of a feature, so they knew how much to invest into it ahead of time. Since our process involved us iterating through the levels, it also meant that we could schedule each step far ahead of time and evaluate the scope of our project and adapt in a reasonable time if we were falling behind.",
+                "Inspired by Sebastien Ebacher's Emotion Based Creation Pipeline framework, we developed a Level of Done system to align expectations across the team. Based in our teams pride in showcasing a feature, it ensured that our feature quality is rooted in player expectations over any technical specifications.",
+                "Settling on a target quality ahead of time also allowed us to better plan how we would spend our time and resources and agree on what aspects of the project we thought were the most important. Since our process involved us iterating through the levels, it also meant that we could schedule each step far ahead of time and evaluate the scope of our project and adapt in a reasonable time if we were falling behind.",
             ],
             image: { type: 'image', src: ouas_lods },
         }, {
             title: "A Proactive Approach to Conflict",
             body: [
-                "Game development is a creative contact sport. Butting heads is not only to be expected, but should be encouraged, as ideas are improved when challenged. As a producer then, the question is how to cultivate an environment in which people can safely engage in discourse without it spilling over into real conflict. Team Contract and discussing our roles and shit early to avoid later issues. RACI.",
-                "But even if we set up guardrails, conflict is inevitable. Non-violent communication and spotting problems early without being afraid to confront them.",
+                "Game development is a creative contact sport. Butting heads should be encouraged, as ideas improve when challenged. I therefore emphasized cultivating an environment where people can safely engage in discourse without it spilling into real conflict. I set up a team agreement at the start to establish shared understanding of communication, disagreement handling, and decision-making. Using the RACI model, we clarified responsibilities within our work so people were less likely to feel stepped on.",
+                "Yet quarrelling is human nature. Regardless of guardrails, I monitor and address conflicts early, even when uncomfortable, as conflicts only simmer and escalate when left alone. When confronting conflicts, I believe that empathy is key. People engage in conflict because they are hurt, not because they enjoy it and using non-violent communication I attempt to get to the bottom of that hurt and try to rectify it.",
             ],
             image: { type: 'video', src: ouas_bridge },
     }],

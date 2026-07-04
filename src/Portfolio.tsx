@@ -511,73 +511,75 @@ const Portfolio: React.FC = () => {
             </div>
 
             {/* Points placed under title/description and centered */}
-            <div style={{ width: '100%', margin: '1.5rem auto 0', display: 'flex', flexDirection: 'column', gap: '3.25rem', alignItems: 'center' }}>
-              {project.points.map((pt, pIndex) => {
-                const isEven = pIndex % 2 === 0;
-                return (
-                  <div
-                    key={pIndex}
-                    style={{
-                      display: 'flex',
-                      gap: '5% 15%',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      flexDirection: isEven ? 'row' : 'row-reverse',
-                      flexWrap: 'wrap',
-                      width: '90%',
-                      borderRadius: '1rem',
-                      overflow: 'hidden',
-                      padding: '1.25rem',
-                      textAlign: 'left',
-                    }}
-                  >
-                    <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                      <h1 style={{ margin: '0.5rem', textAlign: 'center', color: '#0f172a' }}>{pt.title}</h1>
-                      {pt.body.map((text, index) => (
-                        <p key={index} style={{ margin: '0 0 1rem 0', lineHeight: 1.8 }}>
-                          {text}
-                        </p>
-                      ))}
+            <div className="project-container">
+              <div style={{ width: '100%', margin: '1.5rem auto 0', display: 'flex', flexDirection: 'column', gap: '3.25rem', alignItems: 'center' }}>
+                {project.points.map((pt, pIndex) => {
+                  const isEven = pIndex % 2 === 0;
+                  return (
+                    <div
+                      key={pIndex}
+                      style={{
+                        display: 'flex',
+                        gap: '5% 15%',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        flexDirection: isEven ? 'row' : 'row-reverse',
+                        flexWrap: 'wrap',
+                        width: '90%',
+                        borderRadius: '1rem',
+                        overflow: 'hidden',
+                        padding: '1.25rem',
+                        textAlign: 'left',
+                      }}
+                    >
+                      <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        <h1 style={{ margin: '0.5rem', textAlign: 'center', color: '#0f172a' }}>{pt.title}</h1>
+                        {pt.body.map((text, index) => (
+                          <p key={index} style={{ margin: '0 0 1rem 0', lineHeight: 1.8 }}>
+                            {text}
+                          </p>
+                        ))}
+                      </div>
+                      <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', justifyContent: 'center' }}>
+                        {pt.image?.type === 'youtube' ? (
+                          <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
+                            <iframe
+                              title={`${project.title} - ${pt.title} video`}
+                              src={`https://www.youtube.com/embed/${pt.image.src}`}
+                              style={{ width: '100%', height: '100%', border: 0 }}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          </div>
+                        ) : pt.image?.type === 'video' ? (
+                          <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
+                            <video
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              title={`${project.title} - ${pt.title} video`}
+                              src={pt.image.src}
+                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                          </div>
+                        ) : (
+                          <img src={pt.image?.src || project.image} alt={pt.title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.75rem' }} />
+                        )}
+                      </div>
                     </div>
-                    <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', justifyContent: 'center' }}>
-                      {pt.image?.type === 'youtube' ? (
-                        <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
-                          <iframe
-                            title={`${project.title} - ${pt.title} video`}
-                            src={`https://www.youtube.com/embed/${pt.image.src}`}
-                            style={{ width: '100%', height: '100%', border: 0 }}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        </div>
-                      ) : pt.image?.type === 'video' ? (
-                        <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
-                          <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            title={`${project.title} - ${pt.title} video`}
-                            src={pt.image.src}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          />
-                        </div>
-                      ) : (
-                        <img src={pt.image?.src || project.image} alt={pt.title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.75rem' }} />
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
               {project.graphics && project.graphics.length > 0 && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem 12.5rem', justifyContent: 'center', marginTop: '2rem' }}>
+                <div className="project-graphics">
                   {project.graphics.map((graphic, gIndex) => (
-                    <div key={gIndex} style={{ width: '100%', maxWidth: '720px', background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden' }}>
+                    <div key={gIndex} style={{ width: '100%', maxWidth: '480px', background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden' }}>
                       {graphic.type === 'youtube' ? (
                         <iframe
                           title={`${project.title} - graphic ${gIndex + 1}`}
                           src={`https://www.youtube.com/embed/${graphic.src}`}
-                          style={{ width: '100%', height: '100%', border: 0 }}
+                          style={{ width: '100%', border: 0 }}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                         />
@@ -589,10 +591,17 @@ const Portfolio: React.FC = () => {
                           playsInline
                           title={`${project.title} - graphic ${gIndex + 1}`}
                           src={graphic.src}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          style={{ width: '100%', objectFit: 'cover' }}
                         />
                       ) : (
-                        <img src={graphic.src} alt={`${project.title} - graphic ${gIndex + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', backgroundColor: 'transparent' }} />
+                        <img
+                        src={graphic.src}
+                        alt={`${project.title} - graphic ${gIndex + 1}`}
+                        style={{
+                          width: '100%',
+                          objectFit: 'cover',
+                          backgroundColor: 'transparent'
+                        }} />
                       )}
                     </div>
                   ))}
