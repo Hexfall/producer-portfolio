@@ -3,6 +3,9 @@ import type { Project } from "../types/Project";
 import chibo_showcase from '../assets/Chibo/Chibo - gameplay.webm';
 import chibo_main from '../assets/Chibo/Chibo - Showcase.png';
 import chibo_title from '../assets/Chibo/Chibo - Title.png';
+import pool from '../assets/Chibo/Pool.png';
+import captain from '../assets/Chibo/Captain.png';
+import under_construction from '../assets/Under-Construction.png';
 
 const Chibo: Project = {
     id: 4,
@@ -17,13 +20,9 @@ const Chibo: Project = {
             body: ["Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms."],
             image: { type: 'youtube', src: 'MxJ5GkymzOs' },
         }, {
-            title: "Gameplay",
-            body: ["Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors."],
-            image: { type: 'image', src: chibo_main },
-        }, {
-            title: "Ideation",
-            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
-            image: { type: 'image', src: chibo_main },
+            title: "Under construction",
+            body: ["This part of the portfolio is still being developed. Enjoy these images from the project in the mean time."],
+            image: { type: 'image', src: under_construction },
     }],
     info: {
         duration: "15 weeks",
@@ -31,7 +30,10 @@ const Chibo: Project = {
         year: "2025",
     },
     graphics: [
+        { type: 'image', src: chibo_main },
         { type: 'video', src: chibo_showcase },
+        { type: 'image', src: pool },
+        { type: 'image', src: captain },
     ],
 }
 
