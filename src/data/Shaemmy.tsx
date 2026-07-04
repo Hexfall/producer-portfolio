@@ -18,7 +18,7 @@ const Shaemmy: Project = {
     links: {itch: 'https://hexfall.itch.io/shaemmy'},
     points: [{
             title: "Overview",
-            body: ["Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms."],
+            body: ["Is there any use for a producer in a game jam project? That was the question I set out to answer during the Nordic Game Jam 2026. I took on the role of producer for a team of 10 people, and we made a game called Shaemmy, where you devour the solar system as a nascent black hole."],
             image: { type: 'image', src: shaemmy_main },
         }, {
             title: "Under construction",

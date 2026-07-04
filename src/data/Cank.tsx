@@ -19,7 +19,7 @@ const Cank: Project = {
     links: {itch: 'https://razzledazzle-studio.itch.io/cank'},
     points: [{
             title: "Overview",
-            body: ["Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms."],
+            body: ["CANK! was developed as a vertical slice as a proof-of-fun for a full game. Set in a playful world built on cans, players explore a unique environment and help set up the town's cultural festival. Although it showed promise, we ultimately decided not to go further with the project. It was developed in 3 weeks by a team of 13 as part of the DADIU program."],
             image: { type: 'image', src: cank_main },
         }, {
             title: "Under construction",

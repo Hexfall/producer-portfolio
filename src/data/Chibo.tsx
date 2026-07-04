@@ -17,7 +17,7 @@ const Chibo: Project = {
     links: {itch: 'https://simmix-dev.itch.io/chibo-journey-of-fate'},
     points: [{
             title: "Overview",
-            body: ["Once Upon a Shell is a roguelike fairy tale racer where you challenge the hares in a whimsical journey through enchanted forests and mystical realms."],
+            body: ["Set in the world of Raad where fate is a force of nature, Chibo: Journey of Fate explores the weight of responsibility and the conflict between duty and freedom. It was made by a team of 7 over a 15 week period."],
             image: { type: 'youtube', src: 'MxJ5GkymzOs' },
         }, {
             title: "Under construction",
