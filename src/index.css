@@ -154,46 +154,12 @@ header {
   margin-top: 0rem;
   margin-bottom: 0rem;
 }
-
-@media (max-width: 1600px) {
-  .project-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project-graphics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5rem 2.5rem;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-}
-
-@media (min-width: 1600px) {
-  .project-container {
-    display: flex;
-    flex-direction: row;
-    gap: 8rem;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  .project-graphics {
-    display: flex;
-    flex-direction: column;
-    gap: 8rem 7.5rem;
-    justify-content: center;
-    width: 20%
-  }
-}
-
-.project-container-full-images {
+.project-container {
   display: flex;
   flex-direction: column;
 }
 
-.project-graphics-full {
+.project-graphics {
   display: flex;
   flex-wrap: wrap;
   gap: 5rem 2.5rem;

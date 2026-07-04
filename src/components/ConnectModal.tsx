@@ -96,7 +96,7 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ onClose }) => {
           <div>
             <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#f8fafc' }}>Viktor Máni Mønster</h3>
             <p style={{ margin: 0, lineHeight: 1.6, fontSize: '0.9rem', color: '#cbd5e1' }}>
-              Frontend-focused developer who loves crafting clean, interactive interfaces and animation-forward experiences. React, TypeScript and modern CSS.
+              Hey, I'm Viktor - a game producer with a passion for creating engaging and meaningful experiences. I love helping to bring out the best in people's ideas and collaborating with talented individuals. Let's connect and explore how we can create something amazing together!
             </p>
           </div>
         </div>
