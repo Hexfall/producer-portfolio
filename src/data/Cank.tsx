@@ -4,6 +4,10 @@ import cank_showcase from '../assets/CANK/CANK - gameplay.webm';
 import cank_main from '../assets/CANK/CANK - Showcase.png';
 import cank_title from '../assets/CANK/CANK - Title.png';
 import under_construction from '../assets/Under-Construction.png';
+import main_house from '../assets/CANK/Main House.png';
+import racoon from '../assets/CANK/Racoon.png';
+import alley from '../assets/CANK/Alley.png';
+import sharpshooter from '../assets/CANK/Sharpshooter.png';
 
 const Cank: Project = {
     id: 3,
@@ -29,6 +33,10 @@ const Cank: Project = {
     },
     graphics: [
         { type: 'video', src: cank_showcase },
+        { type: 'image', src: main_house },
+        { type: 'image', src: racoon },
+        { type: 'image', src: alley },
+        { type: 'image', src: sharpshooter },
     ],
 }
 
