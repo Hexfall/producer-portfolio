@@ -511,7 +511,7 @@ const Portfolio: React.FC = () => {
             </div>
 
             {/* Points placed under title/description and centered */}
-            <div className="project-container">
+            <div className= {project.points.length > 2 ? "project-container" : "project-container-full-images"}>
               <div style={{ width: '100%', margin: '1.5rem auto 0', display: 'flex', flexDirection: 'column', gap: '3.25rem', alignItems: 'center' }}>
                 {project.points.map((pt, pIndex) => {
                   const isEven = pIndex % 2 === 0;
@@ -572,7 +572,7 @@ const Portfolio: React.FC = () => {
                 })}
               </div>
               {project.graphics && project.graphics.length > 0 && (
-                <div className="project-graphics">
+                <div className={project.points.length > 2 ? "project-graphics" : "project-graphics-full"} >
                   {project.graphics.map((graphic, gIndex) => (
                     <div key={gIndex} style={{ width: '100%', maxWidth: '480px', background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden' }}>
                       {graphic.type === 'youtube' ? (
