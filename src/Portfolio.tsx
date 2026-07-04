@@ -579,7 +579,7 @@ const Portfolio: React.FC = () => {
                         <iframe
                           title={`${project.title} - graphic ${gIndex + 1}`}
                           src={`https://www.youtube.com/embed/${graphic.src}`}
-                          style={{ width: '100%', border: 0 }}
+                          style={{ width: '100%', border: 0, borderRadius: '0.75rem', }}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                         />
@@ -591,7 +591,7 @@ const Portfolio: React.FC = () => {
                           playsInline
                           title={`${project.title} - graphic ${gIndex + 1}`}
                           src={graphic.src}
-                          style={{ width: '100%', objectFit: 'cover' }}
+                          style={{ width: '100%', objectFit: 'cover', borderRadius: '0.75rem', }}
                         />
                       ) : (
                         <img
@@ -600,7 +600,8 @@ const Portfolio: React.FC = () => {
                         style={{
                           width: '100%',
                           objectFit: 'cover',
-                          backgroundColor: 'transparent'
+                          backgroundColor: 'transparent',
+                          borderRadius: '0.75rem',
                         }} />
                       )}
                     </div>
