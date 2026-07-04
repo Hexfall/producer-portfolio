@@ -3,9 +3,10 @@ import type { Project } from "../types/Project";
 import chibo_showcase from '../assets/Chibo/Chibo - gameplay.webm';
 import chibo_main from '../assets/Chibo/Chibo - Showcase.png';
 import chibo_title from '../assets/Chibo/Chibo - Title.png';
-import pool from '../assets/Chibo/Pool.png';
-import captain from '../assets/Chibo/Captain.png';
 import under_construction from '../assets/Under-Construction.png';
+
+var captain: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MzM2MS5wbmc=/794x1000/JZcxuE.png';
+var pool: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MjgwMi5wbmc=/794x1000/Wxs4do.png';
 
 const Chibo: Project = {
     id: 4,

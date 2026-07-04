@@ -1,14 +1,15 @@
 import type { Project } from "../types/Project";
 
-import ouas_showcase from '../assets/OUaS/gameplay_gif.webm';
 import ouas_title from '../assets/OUaS/OUaS - Title.png';
 import ouas_main from '../assets/OUaS/OUaS - Showcase.png';
 import ouas_lods from '../assets/OUaS/OUaS - LoDs.png';
 import peter_rabbit from '../assets/OUaS/peter_rabbit.png';
-import ouas_bridge from '../assets/OUaS/OUaS - Bridge Jump.webm';
-import ouas_small_run from '../assets/OUaS/OUaS - small run.webm';
 import ouas_upgrades from '../assets/OUaS/OUaS - Upgrades.png';
 import ouas_story_book from '../assets/OUaS/OUaS - Book.png';
+
+var ouas_showcase: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/6edac1953155a96d804446f02df26213.webm';
+var ouas_small_run: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/890122d11b67732d4342a50823ee735a.webm';
+var ouas_bridge: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/5e16ecad2317ada016792eed54fc414e.webm';
 
 const OUaS: Project = {
     id: 1,
