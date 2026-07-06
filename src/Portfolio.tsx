@@ -3,6 +3,8 @@ import home_icon from './assets/home.svg';
 import burger_icon from './assets/burger-icon.svg';
 import photo from './assets/photo.jpg';
 import ConnectModal from './components/ConnectModal';
+import EmblaCarousel from './components/EmblaCarousel';
+import ProjectPointDisplay from './components/ProjectPointDisplay';
 import ProjectLinks from './components/ProjectLinks';
 import ProjectInfo from './components/ProjectInfo';
 
@@ -511,62 +513,10 @@ const Portfolio: React.FC = () => {
             </div>
 
             {/* Points placed under title/description and centered */}
+            <EmblaCarousel slides={project.points.map((pt, pIndex) => (
+              <ProjectPointDisplay key={pIndex} point={pt} isEven={pIndex % 2 === 0} />
+            ))} options={{ loop: false }} />
             <div className="project-container">
-              <div style={{ width: '100%', margin: '1.5rem auto 0', display: 'flex', flexDirection: 'column', gap: '3.25rem', alignItems: 'center' }}>
-                {project.points.map((pt, pIndex) => {
-                  const isEven = pIndex % 2 === 0;
-                  return (
-                    <div
-                      key={pIndex}
-                      style={{
-                        display: 'flex',
-                        gap: '5% 15%',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        flexDirection: isEven ? 'row' : 'row-reverse',
-                        flexWrap: 'wrap',
-                        width: '90%',
-                        borderRadius: '1rem',
-                        overflow: 'hidden',
-                        padding: '1.25rem',
-                        textAlign: 'left',
-                      }}
-                    >
-                      <div className="project-point-text">
-                        <h1 style={{ margin: '0.5rem', textAlign: 'center', color: '#0f172a' }}>{pt.title}</h1>
-                        {pt.body.map((text) => text)}
-                      </div>
-                      <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', justifyContent: 'center' }}>
-                        {pt.image?.type === 'youtube' ? (
-                          <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
-                            <iframe
-                              title={`${project.title} - ${pt.title} video`}
-                              src={`https://www.youtube.com/embed/${pt.image.src}`}
-                              style={{ width: '100%', height: '100%', border: 0 }}
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                            />
-                          </div>
-                        ) : pt.image?.type === 'video' ? (
-                          <div style={{ width: '100%', maxWidth: '720px', aspectRatio: '16/9', background: '#000', borderRadius: '0.75rem', overflow: 'hidden' }}>
-                            <video
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              title={`${project.title} - ${pt.title} video`}
-                              src={pt.image.src}
-                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            />
-                          </div>
-                        ) : (
-                          <img src={pt.image?.src || project.image} alt={pt.title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.75rem' }} />
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
               {project.graphics && project.graphics.length > 0 && (
                 <div className="project-graphics">
                   {project.graphics.map((graphic, gIndex) => (
