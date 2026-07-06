@@ -18,19 +18,27 @@ const Shaemmy: Project = {
     links: {itch: 'https://hexfall.itch.io/shaemmy'},
     points: [{
             title: "Overview",
-            body: ["Is there any use for a producer in a game jam project? That was the question I set out to answer during the Nordic Game Jam 2026. I took on the role of producer for a team of 10 people, and we made a game called Shaemmy, where you devour the solar system as a nascent black hole."],
+            body: [
+                (<p>Is there any use for a producer in a game jam project? That was the question I set out to answer during the Nordic Game Jam 2026. I took on the role of producer for a team of 10 people, and we made a game called Shaemmy, where you devour the solar system as a nascent black hole.</p>)
+            ],
             image: { type: 'image', src: shaemmy_main },
         }, {
             title: "Under construction",
-            body: ["This part of the portfolio is still being developed. Enjoy these images from the project in the mean time."],
+            body: [
+                (<p>This part of the portfolio is still being developed. Enjoy these images from the project in the mean time.</p>)
+            ],
             image: { type: 'image', src: under_construction },
         /*}, {
             title: "Stripped Down Task Management",
-            body: ["Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors."],
+            body: [
+                (<p>Players navigate through procedurally generated tracks, collecting power-ups and avoiding obstacles while racing against time and other competitors.</p>)
+            ],
             image: { type: 'image', src: shaemmy_main },
         }, {
             title: "Something Vigilance",
-            body: ["Through an extended ideation process, we refined our ideas and explored them well before leaping into developmtent."],
+            body: [
+                (<p>Through an extended ideation process, we refined our ideas and explored them well before leaping into development.</p>)
+            ],
             image: { type: 'image', src: shaemmy_main },*/
     }],
     info: {

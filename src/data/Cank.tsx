@@ -19,11 +19,15 @@ const Cank: Project = {
     links: {itch: 'https://razzledazzle-studio.itch.io/cank'},
     points: [{
             title: "Overview",
-            body: ["CANK! was developed as a vertical slice as a proof-of-fun for a full game. Set in a playful world built on cans, players explore a unique environment and help set up the town's cultural festival. Although it showed promise, we ultimately decided not to go further with the project. It was developed in 3 weeks by a team of 13 as part of the DADIU program."],
+            body: [
+                (<p>CANK! was developed as a vertical slice as a proof-of-fun for a full game. Set in a playful world built on cans, players explore a unique environment and help set up the town's cultural festival. Although it showed promise, we ultimately decided not to go further with the project. It was developed in 3 weeks by a team of 13 as part of the DADIU program.</p>)
+            ],
             image: { type: 'image', src: cank_main },
         }, {
             title: "Under construction",
-            body: ["This part of the portfolio is still being developed. Enjoy these images from the project in the mean time."],
+            body: [
+                (<p>This part of the portfolio is still being developed. Enjoy these images from the project in the mean time.</p>)
+            ],
             image: { type: 'image', src: under_construction },
     }],
     info: {

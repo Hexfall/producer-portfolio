@@ -532,13 +532,9 @@ const Portfolio: React.FC = () => {
                         textAlign: 'left',
                       }}
                     >
-                      <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      <div className="project-point-text">
                         <h1 style={{ margin: '0.5rem', textAlign: 'center', color: '#0f172a' }}>{pt.title}</h1>
-                        {pt.body.map((text, index) => (
-                          <p key={index} style={{ margin: '0 0 1rem 0', lineHeight: 1.8 }}>
-                            {text}
-                          </p>
-                        ))}
+                        {pt.body.map((text) => text)}
                       </div>
                       <div style={{ flex: '1 1 320px', minWidth: '280px', display: 'flex', justifyContent: 'center' }}>
                         {pt.image?.type === 'youtube' ? (

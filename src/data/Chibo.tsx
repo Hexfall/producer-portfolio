@@ -18,11 +18,15 @@ const Chibo: Project = {
     links: {itch: 'https://simmix-dev.itch.io/chibo-journey-of-fate'},
     points: [{
             title: "Overview",
-            body: ["Set in the world of Raad where fate is a force of nature, Chibo: Journey of Fate explores the weight of responsibility and the conflict between duty and freedom. It was made by a team of 7 over a 15 week period."],
+            body: [
+                (<p>Set in the world of Raad where fate is a force of nature, Chibo: Journey of Fate explores the weight of responsibility and the conflict between duty and freedom. It was made by a team of 7 over a 15 week period.</p>)
+            ],
             image: { type: 'youtube', src: 'MxJ5GkymzOs' },
         }, {
             title: "Under construction",
-            body: ["This part of the portfolio is still being developed. Enjoy these images from the project in the mean time."],
+            body: [
+                (<p>This part of the portfolio is still being developed. Enjoy these images from the project in the mean time.</p>)
+            ],
             image: { type: 'image', src: under_construction },
     }],
     info: {

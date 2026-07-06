@@ -167,6 +167,23 @@ header {
   margin-top: 2rem;
 }
 
+.project-point-text {
+  flex: 1 1 320px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  line-height: 1.8;
+}
+
+.project-point-bullet {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  gap: 0;
+  padding: 0;
+}
+
 @media (min-width: 1011px) {
   .burger-btn {
     display: none;

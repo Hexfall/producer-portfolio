@@ -1,6 +1,6 @@
 export interface ProjectPoint {
     title: string;
-    body: string[];
+    body: React.ReactNode[];
     image?: Graphic;
 }
 
