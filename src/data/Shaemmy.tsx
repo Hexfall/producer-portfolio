@@ -19,7 +19,18 @@ const Shaemmy: Project = {
     points: [{
             title: "Overview",
             body: [
-                (<p>Is there any use for a producer in a game jam project? That was the question I set out to answer during the Nordic Game Jam 2026. I took on the role of producer for a team of 10 people, and we made a game called Shaemmy, where you devour the solar system as a nascent black hole.</p>)
+                (<p>Is there any use for a producer in a game jam project? That was the question I set out to answer during the Nordic Game Jam 2026. I took on the role of producer for a team of 10 people, and we made a game called Shaemmy, where you devour the solar system as a nascent black hole.</p>),
+                (<div className="project-point-bullet">
+                    <p style={{ marginBottom: '-1rem' }}>
+                        Having barely two das to complete the project, any production processes I set up had to be, first and foremost, lean. This meant stripping down my usual tools down to their essentials and doing my best to make sure we were always moving. For this, I used:
+                    </p>
+                    <ul>
+                        <li>Mind Mapping, to establish early themes in our ideation.</li>
+                        <li>Basic macro and micro level feature tracking using post-it's, to ensure features weren't falling behind.</li>
+                        <li>Active monitoring, to make sure that the people that needed to talk to one another did so.</li>
+                        <li>Clear areas of responsibility, so people could be empowered to make choices on their own.</li>
+                    </ul>
+                </div>),
             ],
             image: { type: 'image', src: shaemmy_main },
         }, {
