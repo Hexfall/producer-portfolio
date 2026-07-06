@@ -20,7 +20,18 @@ const Cank: Project = {
     points: [{
             title: "Overview",
             body: [
-                (<p>CANK! was developed as a vertical slice as a proof-of-fun for a full game. Set in a playful world built on cans, players explore a unique environment and help set up the town's cultural festival. Although it showed promise, we ultimately decided not to go further with the project. It was developed in 3 weeks by a team of 13 as part of the DADIU program.</p>)
+                (<p>CANK! was developed as a vertical slice as a proof-of-fun for a full game. Set in a playful world built on cans, players explore a unique environment and help set up the town's cultural festival. Although it showed promise, we ultimately decided not to go further with the project. It was developed in 3 weeks by a team of 13 as part of the DADIU program.</p>),
+                (<div className="project-point-bullet">
+                    <p style={{ marginBottom: '-1rem' }}>
+                        The explicit goal of CANK! was to develop a vertical slice: a proof of concept which could be developed into a full game on solid foundations. My emphasis therefore, was to find and iterate on the fun of our concept as much as possible, without having to worry about the things in the game that just had to work. This is why I focused on:
+                    </p>
+                    <ul>
+                        <li>Heavy playtesting, from very early on in the process, to root our fun in delivering value to the player.</li>
+                        <li>A flexible production schedule, to allow for pivoting to where the fun was.</li>
+                        <li>Concentrated quality: a few pillars which were very developed over many lower quality features.</li>
+                        <li>Nurturing a flexible sprit in the team. We had to be ready to give up on ideas and understand that priorities were malleable.</li>
+                    </ul>
+                </div>),
             ],
             image: { type: 'image', src: cank_main },
         }, {
