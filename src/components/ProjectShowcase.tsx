@@ -1,0 +1,46 @@
+import type { Project } from '../types/Project';
+
+const ProjectShowcase: React.FC<{ project: Project; onClick: () => void }> = ({ project, onClick }) => {
+    return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '80%', maxWidth: '1920px' }}>
+            <div
+                role="button"
+                onClick={() => onClick()}
+                tabIndex={0}
+                style={{
+                flex: 1,
+                borderRadius: '1.5rem',
+                overflow: 'hidden',
+                boxShadow: '0 30px 80px rgba(15,23,42,0.35)',
+                position: 'relative',
+                cursor: 'pointer',
+                maxHeight: '800px',
+                }}
+            >
+                <video
+                src={project.image}
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: '100%', minHeight: '350px', maxHeight: '800px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
+                />
+                <div
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    padding: '1.5rem',
+                    background: 'linear-gradient(180deg, transparent, rgba(15,23,42,0.95))',
+                }}
+                >
+                <h2 style={{ margin: 0, fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)' }}>{project.title}</h2>
+                <p style={{ margin: '0.5rem 0 0', opacity: 0.9 }}>{project.description}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default ProjectShowcase;

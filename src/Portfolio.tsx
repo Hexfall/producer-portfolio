@@ -13,13 +13,11 @@ import people_icon from './assets/people.svg';
 import calendar_icon from './assets/calendar.svg';
 
 import projects from './data/Projects';
+import ProjectShowcase from './components/ProjectShowcase';
 
 const Portfolio: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [displayedIndex, setDisplayedIndex] = useState(0);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [showConnectModal, setShowConnectModal] = useState(false);
-  const [timerResetKey, setTimerResetKey] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement | null>(null);
@@ -28,90 +26,6 @@ const Portfolio: React.FC = () => {
     setActiveSectionIndex(index);
     sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-
-  const handleNextProject = () => {
-    setActiveIndex((current) => (current + 1) % projects.length);
-    setTimerResetKey((prev) => prev + 1);
-  };
-
-  const handlePrevProject = () => {
-    setActiveIndex((current) => (current - 1 + projects.length) % projects.length);
-    setTimerResetKey((prev) => prev + 1);
-  };
-
-  const handleDotClick = (index: number) => {
-    setActiveIndex(index);
-    setTimerResetKey((prev) => prev + 1);
-  };
-
-  const showcaseImgRef = useRef<HTMLVideoElement | null>(null);
-  const showcaseOverlayRef = useRef<HTMLDivElement | null>(null);
-  const prevIndexRef = useRef(0);
-
-  // Handle exit animation when activeIndex changes
-  useEffect(() => {
-    if (activeIndex === displayedIndex) return;
-
-    const img = showcaseImgRef.current;
-    const overlay = showcaseOverlayRef.current;
-    if (!img || !overlay) return;
-
-    // Determine direction for smooth transition
-    const isNext = (activeIndex > prevIndexRef.current) || (prevIndexRef.current === projects.length - 1 && activeIndex === 0);
-    prevIndexRef.current = activeIndex;
-    const exitOffset = isNext ? -40 : 40;
-
-    // Animate out the current image
-    img.style.transition = 'transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 600ms ease';
-    overlay.style.transition = 'transform 750ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 650ms ease';
-    img.style.transform = `translateX(${exitOffset}px)`;
-    img.style.opacity = '0';
-    overlay.style.transform = `translateX(${exitOffset * 0.65}px)`;
-    overlay.style.opacity = '0';
-
-    // After exit animation, update image and animate in
-    const timer = setTimeout(() => {
-      setDisplayedIndex(activeIndex);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [activeIndex, displayedIndex]);
-
-  // Handle entrance animation when displayedIndex updates
-  useEffect(() => {
-    const img = showcaseImgRef.current;
-    const overlay = showcaseOverlayRef.current;
-    if (!img || !overlay) return;
-
-    const isNext = (displayedIndex > prevIndexRef.current) || (prevIndexRef.current === projects.length - 1 && displayedIndex === 0);
-    const enterOffset = isNext ? 40 : -40;
-
-    // Step 1: Remove transitions and set initial state
-    img.style.transition = 'none';
-    overlay.style.transition = 'none';
-    img.style.transform = `translateX(${enterOffset}px)`;
-    img.style.opacity = '0';
-    overlay.style.transform = `translateX(${enterOffset * 0.65}px)`;
-    overlay.style.opacity = '0';
-
-    // Step 2: Force reflow to apply initial state
-    void img.offsetHeight;
-
-    // Step 3: Enable transitions and animate to final state
-    img.style.transition = 'transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 600ms ease';
-    overlay.style.transition = 'transform 750ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 650ms ease';
-    img.style.transform = 'translateX(0)';
-    img.style.opacity = '1';
-    overlay.style.transform = 'translateX(0)';
-    overlay.style.opacity = '1';
-  }, [displayedIndex]);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % projects.length);
-    }, 10000);
-    return () => window.clearInterval(interval);
-  }, [timerResetKey]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -361,113 +275,9 @@ const Portfolio: React.FC = () => {
           <h1 style={{ textAlign: 'center', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)', margin: '0.2rem' }}>Viktor Máni Mønster</h1>
           <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', margin: '0rem' }}>Game Producer</h2>
         <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', maxHeight: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '80%', maxWidth: '1920px' }}>
-            <div
-              onClick={() => scrollToProject(activeIndex)}
-              role="button"
-              tabIndex={0}
-              style={{
-                flex: 1,
-                borderRadius: '1.5rem',
-                overflow: 'hidden',
-                boxShadow: '0 30px 80px rgba(15,23,42,0.35)',
-                position: 'relative',
-                cursor: 'pointer',
-              }}
-            >
-              <video
-                src={projects[displayedIndex].image}
-                ref={showcaseImgRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                style={{ width: '100%', minHeight: '350px', maxHeight: '600px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  padding: '1.5rem',
-                  background: 'linear-gradient(180deg, transparent, rgba(15,23,42,0.95))',
-                }}
-                ref={showcaseOverlayRef}
-              >
-                <h2 style={{ margin: 0, fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)' }}>{projects[displayedIndex].title}</h2>
-                <p style={{ margin: '0.5rem 0 0', opacity: 0.9 }}>{projects[displayedIndex].description}</p>
-              </div>
-            </div>
-          </div>
-          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', justifyContent: 'center' }}>
-            <button
-              type="button"
-              onClick={handlePrevProject}
-              aria-label="Previous project"
-              style={{
-                flexShrink: 0,
-                marginRight: '0.8rem',
-                width: '2.5rem',
-                height: '2.5rem',
-                borderRadius: '999px',
-                border: 'none',
-                background: 'rgba(255, 255, 255, 0.15)',
-                color: '#f1f5f9',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.25rem',
-                transition: 'background 200ms ease',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)')}
-            >
-              ←
-            </button>
-            {projects.map((project, index) => (
-              <button
-                key={project.id}
-                type="button"
-                onClick={() => handleDotClick(index)}
-                aria-label={`Showcase ${project.title}`}
-                style={{
-                  width: '0.85rem',
-                  height: '0.85rem',
-                  borderRadius: '999px',
-                  border: 'none',
-                  background: index === activeIndex ? '#38bdf8' : '#334155',
-                  cursor: 'pointer',
-                }}
-              />
-            ))}
-            <button
-              type="button"
-              onClick={handleNextProject}
-              aria-label="Next project"
-              style={{
-                flexShrink: 0,
-                marginLeft: '0.8rem',
-                width: '2.5rem',
-                height: '2.5rem',
-                borderRadius: '999px',
-                border: 'none',
-                background: 'rgba(255, 255, 255, 0.15)',
-                color: '#f1f5f9',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.25rem',
-                transition: 'background 200ms ease',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)')}
-            >
-              →
-            </button>
-          </div>
+            <EmblaCarousel slides={projects.map((project) => (
+              <ProjectShowcase project={project} onClick={() => document?.getElementById(`project-${project.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
+            ))} options={{ loop: true }} autoplay={true} />
           <p style={{ letterSpacing: '0.35em', textTransform: 'uppercase', opacity: 0.8, fontSize: '0.8rem' }}>Portfolio Showcase</p>
         </div>
       </header>
