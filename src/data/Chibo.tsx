@@ -19,7 +19,19 @@ const Chibo: Project = {
     points: [{
             title: "Overview",
             body: [
-                (<p>Set in the world of Raad where fate is a force of nature, Chibo: Journey of Fate explores the weight of responsibility and the conflict between duty and freedom. It was made by a team of 7 over a 15 week period.</p>)
+                (<p>Set in the world of Raad where fate is a living force of nature, Chibo: Journey of Fate explores the weight of responsibility and the conflict between duty and freedom. It was made by a team of 7 over a 15 week period.</p>),
+                (<div className="project-point-bullet">
+                    <p style={{ marginBottom: '-1rem' }}>
+                        Wanting to use Chibo as an opportunity to explore the requirements of a project and the investment vs. payoff of various tools, I explored a breadth of producer methodologies during the project. Just some of which include:
+                    </p>
+                    <ul>
+                        <li>A Game Design Macro, as defined by Richard LeMarchand, to "tableify" the flow of our game comprehensively.</li>
+                        <li>A Simple Schedule, which compares work hours to full project estimates in a work-centric scope check.</li>
+                        <li>Retrospectives, to adjust our processes on the fly.</li>
+                        <li>GANTT Charts to plan and timetable our production.</li>
+                        <li>MoSCoW prioritization, to ensure that we were always working on the features that delivered the most value.</li>
+                    </ul>
+                </div>),
             ],
             image: { type: 'youtube', src: 'MxJ5GkymzOs' },
         }, {
