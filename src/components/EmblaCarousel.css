@@ -39,15 +39,23 @@
 }
 
 .embla__controls {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  justify-content: space-between;
   gap: 1.2rem;
   margin-top: 1.8rem;
   margin-left: auto;
   margin-right: auto;
   width: 90%;
   max-width: 1920px;
+  @media (min-width: 780px) {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    justify-content: space-between;
+  }
+  @media (max-width: 780px) {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
 }
 
 .embla__buttons {
@@ -96,7 +104,9 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+  @media (min-width: 780px) {
+    margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+  }
 }
 
 .embla__dot {
