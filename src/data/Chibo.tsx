@@ -5,6 +5,10 @@ import chibo_main from '../assets/Chibo/Chibo - Showcase.png';
 import chibo_title from '../assets/Chibo/Chibo - Title.png';
 import under_construction from '../assets/Under-Construction.png';
 
+import macro from '../assets/Chibo/Macro - Snapshot.png'
+import simple from '../assets/Chibo/Simple Schedule.png'
+import schedule from '../assets/Chibo/Schedule.png'
+
 var captain: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MzM2MS5wbmc=/794x1000/JZcxuE.png';
 var pool: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MjgwMi5wbmc=/794x1000/Wxs4do.png';
 
@@ -52,6 +56,9 @@ const Chibo: Project = {
         { type: 'video', src: chibo_showcase },
         { type: 'image', src: pool },
         { type: 'image', src: captain },
+        { type: 'image', src: macro },
+        { type: 'image', src: simple },
+        { type: 'image', src: schedule },
     ],
 }
 

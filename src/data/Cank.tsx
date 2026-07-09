@@ -8,6 +8,11 @@ import main_house from '../assets/CANK/Main House.png';
 import racoon from '../assets/CANK/Racoon.png';
 import alley from '../assets/CANK/Alley.png';
 import sharpshooter from '../assets/CANK/Sharpshooter.png';
+import fun from '../assets/CANK/Fun.png'
+import zippy from '../assets/CANK/Zippy Concept.png'
+import schedule from '../assets/CANK/Schedule.png'
+import swot from '../assets/CANK/SWOT Retro.png'
+import retro from '../assets/CANK/Retro Responsibilities.png'
 
 const Cank: Project = {
     id: 3,
@@ -53,6 +58,11 @@ const Cank: Project = {
         { type: 'image', src: racoon },
         { type: 'image', src: alley },
         { type: 'image', src: sharpshooter },
+        { type: 'image', src: zippy },
+        { type: 'image', src: fun },
+        { type: 'image', src: schedule },
+        { type: 'image', src: swot },
+        { type: 'image', src: retro },
     ],
 }
 

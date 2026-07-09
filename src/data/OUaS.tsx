@@ -7,6 +7,15 @@ import peter_rabbit from '../assets/OUaS/peter_rabbit.png';
 import ouas_upgrades from '../assets/OUaS/OUaS - Upgrades.png';
 import ouas_story_book from '../assets/OUaS/OUaS - Book.png';
 
+import concept from '../assets/OUaS/concept_turtle.png'
+import wanted from '../assets/OUaS/Wanted_Poster.png'
+import gannt1 from '../assets/OUaS/Epics GANTT - 1.png'
+import gannt2 from '../assets/OUaS/Epics GANTT - 2.png'
+import schedule1 from '../assets/OUaS/Schedule - 1.png'
+import schedule2 from '../assets/OUaS/Schedule - 2.png'
+import postmortem1 from '../assets/OUaS/Postmortem - 1.jpg'
+import postmortem2 from '../assets/OUaS/Postmortem - 2.jpg'
+
 var ouas_showcase: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/6edac1953155a96d804446f02df26213.webm';
 var ouas_small_run: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/890122d11b67732d4342a50823ee735a.webm';
 var ouas_bridge: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/5e16ecad2317ada016792eed54fc414e.webm';
@@ -76,6 +85,14 @@ const OUaS: Project = {
         { type: 'image', src: ouas_story_book },
         { type: 'video', src: ouas_showcase },
         { type: 'image', src: ouas_upgrades },
+        { type: 'image', src: concept },
+        { type: 'image', src: wanted },
+        { type: 'image', src: gannt1 },
+        { type: 'image', src: gannt2 },
+        { type: 'image', src: schedule1 },
+        { type: 'image', src: schedule2 },
+        { type: 'image', src: postmortem1 },
+        { type: 'image', src: postmortem2 },
     ],
 }
 

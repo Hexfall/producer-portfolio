@@ -7,6 +7,10 @@ import under_construction from '../assets/Under-Construction.png';
 import saturn from '../assets/Shaemmy/Saturn.png';
 import Sun from '../assets/Shaemmy/Sun.png';
 import Wide from '../assets/Shaemmy/Wide.png';
+import mind from '../assets/Shaemmy/Mind Map.jpg'
+import ranked from '../assets/Shaemmy/Ranked Ideation.jpg'
+import tracking from '../assets/Shaemmy/Task Tracking.jpg'
+import celebration from '../assets/Shaemmy/Celebration.jpg'
 
 const Shaemmy: Project = {
     id: 2,
@@ -63,6 +67,10 @@ const Shaemmy: Project = {
         { type: 'image', src: saturn },
         { type: 'image', src: Sun },
         { type: 'image', src: Wide },
+        { type: 'image', src: mind },
+        { type: 'image', src: ranked },
+        { type: 'image', src: tracking },
+        { type: 'image', src: celebration },
     ],
 }
 
