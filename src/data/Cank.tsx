@@ -29,7 +29,7 @@ const Cank: Project = {
                         <li>Heavy playtesting, from very early on in the process, to root our fun in delivering value to the player.</li>
                         <li>A flexible production schedule, to allow for pivoting to where the fun was.</li>
                         <li>Concentrated quality: a few pillars which were very developed over many lower quality features.</li>
-                        <li>Nurturing a flexible sprit in the team. We had to be ready to give up on ideas and understand that priorities were malleable.</li>
+                        <li>Nurturing a flexible spirit in the team. We had to be ready to give up on ideas and understand that priorities were malleable.</li>
                     </ul>
                 </div>),
             ],
@@ -37,8 +37,8 @@ const Cank: Project = {
         }, {
             title: "Under construction",
             body: [
-                (<p>Oh no! You've discovered my embarrasing secret. This part of the portfolio is still being developed. Enjoy these images from the project in the mean time.</p>),
-                (<p>Want to learn more about how I manage projects? Check out the page for Once Upon a Shell, which is fully developed. If you were really excited to hear about how I managed this particular project, try checking back in in a couple of days days or feel free to contact me directly through any of the methods listed in my "about me" section.</p>),
+                (<p>Oh no! You've discovered my embarrassing secret. This part of the portfolio is still being developed. Enjoy these images from the project in the meantime.</p>),
+                (<p>Want to learn more about how I manage projects? Check out the page for Once Upon a Shell, which is fully developed. If you were really excited to hear about how I managed this particular project, try checking back in in a couple of days or feel free to contact me directly through any of the methods listed in my "about me" section.</p>),
             ],
             image: { type: 'image', src: under_construction },
     }],

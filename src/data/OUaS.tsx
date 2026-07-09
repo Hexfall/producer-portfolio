@@ -22,7 +22,7 @@ const OUaS: Project = {
     points: [{
             title: "Overview",
             body: [
-                (<p>Once Upon a Shell is a roguelike fairy tale racer where you, as a tortoise, once again challenge the hares to a contest of speed. You must build up speed by sliding down hills to have a chance to beat the much faster hares. It was made in 7 weeks by a team of 13 people as part of the DADIU program. It released on Steam and has had 6000+ unique players. </p>),
+                (<p>Once Upon a Shell is a roguelike fairy tale racer where you, as a tortoise, once again challenge the hares to a contest of speed. You must build up speed by sliding down hills to have a chance to beat the much faster hares. It was made in 7 weeks by a team of 13 people as part of the DADIU program. It released on Steam and has had over 6000 unique players. </p>),
                 (<div className="project-point-bullet">
                     <p style={{ marginBottom: '-1rem' }}>
                         During the development of Once Upon a Shell, some of the key tools I employed included:
@@ -41,7 +41,7 @@ const OUaS: Project = {
             title: "Laying Solid Groundwork",
             body: [
                 (<p>I believe that strong projects are built on strong foundations. That is why I alloted a full week of our 7 week production schedule solely to ideation. Here, my goal was to nurture an open and curious atmosphere to develop our base concept as much as reasonably possible. Programmers, artists, and designers alike got to throw caution to the wind and throw anything at the wall to see what stuck without having to worry about future-proofing or deliverables.</p>),
-                (<p>To further facilitate creativity, I organized small activities to challenge our ideas and ways of thinking. Already at this stage, I set up playtests with people from outside the team on our digital and paper prototypes to test mechanics and get feedback on our ideas. I organized a visit to our local library, so we could explore how fairy tales are typically told and in search of unorthodox inspiration. At every step, I emphasized keeping a wide breath of our team involved, as I believe that great ideas come from diverse sources.</p>),
+                (<p>To further facilitate creativity, I organized small activities to challenge our ideas and ways of thinking. Already at this stage, I set up playtests with people from outside the team on our digital and paper prototypes to test mechanics and get feedback on our ideas. I organized a visit to our local library, so we could explore how fairy tales are typically told and in search of unorthodox inspiration. At every step, I emphasized keeping a wide breadth of our team involved, as I believe that great ideas come from diverse sources.</p>),
             ],
             image: { type: 'image', src: peter_rabbit },
         }, {
