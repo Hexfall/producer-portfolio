@@ -260,7 +260,6 @@ const Portfolio: React.FC = () => {
 
       <header
         style={{
-          // allow scrolling to showcase via headerRef
           scrollSnapAlign: 'start',
           minHeight: '100vh',
           display: 'flex',
@@ -274,7 +273,7 @@ const Portfolio: React.FC = () => {
       >
           <h1 style={{ textAlign: 'center', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)', margin: '0.2rem' }}>Viktor Máni Mønster</h1>
           <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', margin: '0rem' }}>Game Producer</h2>
-        <div ref={headerRef} style={{ width: '100%', maxWidth: '1920px', maxHeight: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+        <div ref={headerRef} style={{ width: '100%', maxWidth: '1200px', maxHeight: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
             <EmblaCarousel slides={projects.map((project) => (
               <ProjectShowcase project={project} onClick={() => document?.getElementById(`project-${project.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
             ))} options={{ loop: true }} autoplay={true} />
