@@ -15,6 +15,7 @@ import schedule1 from '../assets/OUaS/Schedule - 1.png'
 import schedule2 from '../assets/OUaS/Schedule - 2.png'
 import postmortem1 from '../assets/OUaS/Postmortem - 1.jpg'
 import postmortem2 from '../assets/OUaS/Postmortem - 2.jpg'
+import tags from '../assets/OUaS/TAGS.jpg'
 
 var ouas_showcase: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/6edac1953155a96d804446f02df26213.webm';
 var ouas_small_run: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/890122d11b67732d4342a50823ee735a.webm';
@@ -67,12 +68,6 @@ const OUaS: Project = {
                 (<p>Yet quarrelling is human nature. Regardless of guardrails, I monitor and address conflicts early, even when uncomfortable, as conflicts only simmer and escalate when left alone. When confronting conflicts, I believe that empathy is key. People engage in conflict because they are hurt, not because they enjoy it. Using Non-Violent Communication, I attempt to get to the bottom of that hurt and try to rectify it.</p>),
             ],
             image: { type: 'video', src: ouas_bridge },
-        }, {
-            title: "Immediate Release",
-            body: [
-                (<p>It was important to me that when the project was done, it was done. Our deadline was hard, and I made sure that we didn't have to do any work after that deadline. The store page was up and all the bugs were quashed. All of this was done without resorting to crunch as well.</p>),
-            ],
-            image: { type: 'video', src: ouas_bridge },
     }],
     info: {
         duration: "7 weeks",
@@ -93,6 +88,7 @@ const OUaS: Project = {
         { type: 'image', src: schedule2 },
         { type: 'image', src: postmortem1 },
         { type: 'image', src: postmortem2 },
+        { type: 'image', src: tags },
     ],
 }
 
