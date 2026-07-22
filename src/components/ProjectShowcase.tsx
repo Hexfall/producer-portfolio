@@ -16,23 +16,37 @@ const ProjectShowcase: React.FC<{ project: Project; onClick: () => void }> = ({ 
                     maxHeight: '800px',
                 }}
             >
-                {project.image.type == 'video' ? (
-                <video
-                    src={project.image.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    style={{
-                        width: '100%',
-                        minHeight: '350px',
-                        maxHeight: '800px',
-                        objectFit: 'cover',
-                        display: 'block',
-                        willChange: 'transform, opacity'
-                    }}
+                {project.image.type === 'video' ? (
+                    <video
+                        src={project.image.src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            width: '100%',
+                            minHeight: '350px',
+                            maxHeight: '800px',
+                            objectFit: 'cover',
+                            display: 'block',
+                            willChange: 'transform, opacity'
+                        }}
+                        />
+                    ) : project.image.type === 'image' ? (
+                    <img
+                        src={project.image.src}
+                        alt={project.title}
+                        style={{
+                            width: '100%',
+                            minHeight: '350px',
+                            maxHeight: '800px',
+                            objectFit: 'cover',
+                            display: 'block',
+                            willChange: 'transform, opacity'
+                        }}
                     />
-                ) : null}
+                    ) : null
+                }
                 <div
                 style={{
                     position: 'absolute',

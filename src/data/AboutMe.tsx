@@ -1,6 +1,6 @@
 import type { Project } from "../types/Project";
 
-import cank_showcase from '../assets/CANK/CANK - gameplay.webm';
+import self_showcase from '../assets/AboutMe/DADIU Presentation - Fullscreen.png';
 import title from '../assets/AboutMe/Title.png'
 import focus_shot from '../assets/AboutMe/DADIU Presentation - Focus shot.png';
 
@@ -21,8 +21,8 @@ const AboutMe: Project = {
     title: 'About me',
     description: 'Learn more about the man himself.',
     image: {
-        type: "video",
-        src:cank_showcase,
+        type: "image",
+        src:self_showcase,
     },
     titleGraphic: title,
     color: 'wheat',
