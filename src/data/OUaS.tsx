@@ -25,7 +25,10 @@ const OUaS: Project = {
     id: 1,
     title: 'Once Upon a Shell',
     description: 'Challenge the hares once again in this roguelike fairy tale racer.',
-    image: ouas_showcase,
+    image: {
+        type: "video",
+        src:ouas_showcase,
+    },
     titleGraphic: ouas_title,
     color: 'palegreen',
     links: {itch: 'https://razzledazzle-studio.itch.io/once-upon-a-shell', steam: 'https://store.steampowered.com/app/4107970/Once_Upon_a_Shell/'},

@@ -18,7 +18,10 @@ const Cank: Project = {
     id: 3,
     title: 'CANK!',
     description: 'A vertical slice of a playful third-person exploration game set in a tiny open world built on cans.',
-    image: cank_showcase,
+    image: {
+        type: "video",
+        src:cank_showcase,
+    },
     titleGraphic: cank_title,
     color: 'lightpink',
     links: {itch: 'https://razzledazzle-studio.itch.io/cank'},

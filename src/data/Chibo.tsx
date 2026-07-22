@@ -16,7 +16,10 @@ const Chibo: Project = {
     id: 4,
     title: 'Chibo: Journey of Fate',
     description: 'A story-focused journey through fate and freedom.',
-    image: chibo_showcase,
+    image: {
+        type: "video",
+        src:chibo_showcase,
+    },
     titleGraphic: chibo_title,
     color: 'khaki',
     links: {itch: 'https://simmix-dev.itch.io/chibo-journey-of-fate'},

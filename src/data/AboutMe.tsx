@@ -20,7 +20,10 @@ const AboutMe: Project = {
     id: 5,
     title: 'About me',
     description: 'Learn more about the man himself.',
-    image: cank_showcase,
+    image: {
+        type: "video",
+        src:cank_showcase,
+    },
     titleGraphic: title,
     color: 'wheat',
     points: [{

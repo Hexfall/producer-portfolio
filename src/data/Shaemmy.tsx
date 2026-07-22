@@ -16,7 +16,10 @@ const Shaemmy: Project = {
     id: 2,
     title: 'Shaemmy',
     description: 'A Nordic game jam game where you devour the solar system as a nascent black hole.',
-    image: shaemmy_showcase,
+    image: {
+        type: "video",
+        src:shaemmy_showcase,
+    },
     titleGraphic: shaemmy_title,
     color: 'lightblue',
     links: {itch: 'https://hexfall.itch.io/shaemmy'},
