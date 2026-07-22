@@ -17,9 +17,9 @@ import postmortem1 from '../assets/OUaS/Postmortem - 1.jpg'
 import postmortem2 from '../assets/OUaS/Postmortem - 2.jpg'
 import tags from '../assets/OUaS/TAGS.jpg'
 
-var ouas_showcase: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/6edac1953155a96d804446f02df26213.webm';
-var ouas_small_run: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/890122d11b67732d4342a50823ee735a.webm';
-var ouas_bridge: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/5e16ecad2317ada016792eed54fc414e.webm';
+const ouas_showcase: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/6edac1953155a96d804446f02df26213.webm';
+const ouas_small_run: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/890122d11b67732d4342a50823ee735a.webm';
+const ouas_bridge: string = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4107970/extras/5e16ecad2317ada016792eed54fc414e.webm';
 
 const OUaS: Project = {
     id: 1,
@@ -27,7 +27,7 @@ const OUaS: Project = {
     description: 'Challenge the hares once again in this roguelike fairy tale racer.',
     image: ouas_showcase,
     titleGraphic: ouas_title,
-    color: '#cff3c6',
+    color: 'palegreen',
     links: {itch: 'https://razzledazzle-studio.itch.io/once-upon-a-shell', steam: 'https://store.steampowered.com/app/4107970/Once_Upon_a_Shell/'},
     points: [{
             title: "Overview",

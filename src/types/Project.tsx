@@ -15,12 +15,12 @@ export interface Project {
   description: string;
   image: string;
   titleGraphic?: string;
-  color?: string;
+  color: string;
   links?: {
     steam?: string;
     itch?: string;
   };
-  info: {
+  info?: {
     duration: string;
     teamSize: number;
     year: string;

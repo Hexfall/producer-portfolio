@@ -9,8 +9,8 @@ import macro from '../assets/Chibo/Macro - Snapshot.png'
 import simple from '../assets/Chibo/Simple Schedule.png'
 import schedule from '../assets/Chibo/Schedule.png'
 
-var captain: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MzM2MS5wbmc=/794x1000/JZcxuE.png';
-var pool: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MjgwMi5wbmc=/794x1000/Wxs4do.png';
+const captain: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MzM2MS5wbmc=/794x1000/JZcxuE.png';
+const pool: string = 'https://img.itch.zone/aW1hZ2UvMzY0NTU0Ni8yMTY5MjgwMi5wbmc=/794x1000/Wxs4do.png';
 
 const Chibo: Project = {
     id: 4,
@@ -18,7 +18,7 @@ const Chibo: Project = {
     description: 'A story-focused journey through fate and freedom.',
     image: chibo_showcase,
     titleGraphic: chibo_title,
-    color: '#ffd6ad',
+    color: 'khaki',
     links: {itch: 'https://simmix-dev.itch.io/chibo-journey-of-fate'},
     points: [{
             title: "Overview",

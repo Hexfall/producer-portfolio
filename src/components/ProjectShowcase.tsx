@@ -8,13 +8,12 @@ const ProjectShowcase: React.FC<{ project: Project; onClick: () => void }> = ({ 
                 onClick={() => onClick()}
                 tabIndex={0}
                 style={{
-                flex: 1,
-                borderRadius: '1.5rem',
-                overflow: 'hidden',
-                boxShadow: '0 30px 80px rgba(15,23,42,0.35)',
-                position: 'relative',
-                cursor: 'pointer',
-                maxHeight: '800px',
+                    flex: 1,
+                    borderRadius: '1.5rem',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    cursor: 'pointer',
+                    maxHeight: '800px',
                 }}
             >
                 <video
@@ -23,7 +22,14 @@ const ProjectShowcase: React.FC<{ project: Project; onClick: () => void }> = ({ 
                 loop
                 muted
                 playsInline
-                style={{ width: '100%', minHeight: '350px', maxHeight: '800px', objectFit: 'cover', display: 'block', willChange: 'transform, opacity' }}
+                style={{
+                    width: '100%',
+                    minHeight: '350px',
+                    maxHeight: '800px',
+                    objectFit: 'cover',
+                    display: 'block',
+                    willChange: 'transform, opacity'
+                }}
                 />
                 <div
                 style={{
@@ -32,7 +38,8 @@ const ProjectShowcase: React.FC<{ project: Project; onClick: () => void }> = ({ 
                     right: 0,
                     bottom: 0,
                     padding: '1.5rem',
-                    background: 'linear-gradient(180deg, transparent, rgba(15,23,42,0.95))',
+                    background: 'linear-gradient(180deg, transparent, rgba(15,23,42,0.7))',
+                    objectFit: 'contain',
                 }}
                 >
                 <h2 style={{ margin: 0, fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)' }}>{project.title}</h2>
