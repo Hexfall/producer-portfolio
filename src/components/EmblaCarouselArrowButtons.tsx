@@ -18,11 +18,13 @@ export const usePrevNextButtons = (
   const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return
     emblaApi.scrollPrev()
+    emblaApi.reInit()
   }, [emblaApi])
 
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return
     emblaApi.scrollNext()
+    emblaApi.reInit()
   }, [emblaApi])
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
