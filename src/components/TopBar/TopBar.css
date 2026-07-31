@@ -1,0 +1,92 @@
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem 6% .8rem 6%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.top-bar__button, .top-bar__button-mobile {
+    background-color: rgb(0 0 0 / 0.25);
+    display: flex;
+    flex-direction: column;
+    height: 4rem;
+    width: 12%;
+    max-width: 12rem;
+    min-width: 4rem;
+    border-radius: 1rem;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.top-bar__button-mobile {
+    width: 12rem;
+    height: 4rem;
+}
+
+.top-bar__button:hover, .top-bar__button-mobile:hover {
+    background-color: rgb(0 0 0 / 0.1);
+}
+
+.top-bar__burger-button {
+    background-color: rgb(0 0 0 / 0.25);
+    display: none;
+    flex-direction: column;
+    height: 4rem;
+    width: 4rem;
+    max-width: 12rem;
+    min-width: 4rem;
+    border-radius: 1rem;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.top-bar__mobile_overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    background: rgb(40 40 40 / 0.15);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    gap: 1.25rem;
+    color: #f8fafc;
+    transition: backdrop-filter 0.3s ease;
+}
+
+.top-bar__mobile_overlay .top-bar__nav-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .top-bar {
+        box-shadow: none;
+    }
+
+    .top-bar__button {
+        display: none;
+    }
+
+    .top-bar__burger-button {
+        display: flex;
+    }
+}

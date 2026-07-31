@@ -1,26 +1,23 @@
+import type {Graphic} from "./Graphic.tsx";
+
 export interface ProjectPoint {
     title: string;
     body: React.ReactNode[];
     image?: Graphic;
 }
 
-export interface Graphic {
-    type: 'image' | 'youtube' | 'video';
-    src: string;
-}
-
 export interface Project {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image: Graphic;
   titleGraphic?: string;
-  color?: string;
+  color: string;
   links?: {
     steam?: string;
     itch?: string;
   };
-  info: {
+  info?: {
     duration: string;
     teamSize: number;
     year: string;
