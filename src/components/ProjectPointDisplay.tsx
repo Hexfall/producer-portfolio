@@ -1,4 +1,5 @@
 import type { ProjectPoint } from '../types/Project';
+import './ProjectPointDisplay.css'
 
 const ProjectPointDisplay: React.FC<{ point: ProjectPoint; isEven: boolean }> = ({ point, isEven }) => {
     return (

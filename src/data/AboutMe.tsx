@@ -29,12 +29,13 @@ const AboutMe: Project = {
     points: [{
         title: "Who am I?",
         body: [
-            (<p>Hey, I'm Viktor - a game producer with a passion for creating engaging and meaningful experiences. I love helping to bring out the best in people's ideas and collaborating with talented individuals. Let's connect and explore how we can create something amazing together.</p>),
-            (<h1 style={{ textAlign: 'center', color: '#0f172a' }} >Let's connect</h1>),
-            (<div style={{ display: 'flex', flexDirection: 'row', gap: '0.75rem', justifyContent: 'center' }}>
+            (<p>Hey, I'm Viktor - a game producer with a passion for creating engaging and meaningful experiences. I love helping to bring out the best in people's ideas and collaborating with talented individuals.</p>),
+            (<h1 style={{ textAlign: 'center', color: '#0f172a' }} >Let's connect!</h1>),
+            (<p style={{marginTop: '-1.5rem', marginBottom: '1.5rem'}}>Interested in making great games together? Shoot me a message and let's figure out how we can collaborate.</p>),
+            (<div style={{ display: 'flex', flexDirection: 'row', gap: '0.75rem', justifyContent: 'center', marginBottom: '1rem' }}>
                 <button
                     type="button"
-                    className={'top-bar__button'}
+                    className={'connect-button'}
                     onClick={() => window.open('https://www.linkedin.com/in/viktor-m%C3%A1ni-m%C3%B8nster-525231203/', '_blank')}
                     aria-label="LinkedIn"
                     title="Viktor Máni Mønster"
@@ -43,7 +44,7 @@ const AboutMe: Project = {
                 </button>
                 <button
                     type="button"
-                    className={'top-bar__button'}
+                    className={'connect-button'}
                     onClick={() => window.open('mailto:viktor@mani.monster', '_blank')}
                     aria-label="Email"
                     title="viktor@mani.monster"
@@ -52,7 +53,7 @@ const AboutMe: Project = {
                 </button>
                 <button
                     type="button"
-                    className={'top-bar__button'}
+                    className={'connect-button'}
                     onClick={() => window.open('https://discord.com/users/hexfall', '_blank')}
                     aria-label="Discord"
                     title="hexfall"
