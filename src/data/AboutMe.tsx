@@ -26,6 +26,12 @@ const AboutMe: Project = {
     },
     titleGraphic: title,
     color: 'wheat',
+    links: {itch: 'https://hexfall.itch.io/'},
+    info: {
+        duration: "27 years",
+        teamSize: 1,
+        year: "1999",
+    },
     points: [{
         title: "Who am I?",
         body: [
