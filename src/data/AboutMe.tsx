@@ -28,7 +28,7 @@ const AboutMe: Project = {
     color: 'wheat',
     links: {itch: 'https://hexfall.itch.io/'},
     info: {
-        duration: "27 years",
+        duration: `${(new Date(new Date().getTime() - new Date(1999, 5, 15).getTime())).getFullYear() - 1970} years`,
         teamSize: 1,
         year: "1999",
     },
