@@ -1,0 +1,31 @@
+.image_overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    background: rgb(40 40 40 / 0.15);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    gap: 1.25rem;
+    color: #f8fafc;
+    transition: backdrop-filter 0.3s ease;
+}
+
+.image_overlay .top-bar__nav-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.project-graphics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem 2.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}

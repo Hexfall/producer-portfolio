@@ -158,14 +158,6 @@ header {
   flex-direction: column;
 }
 
-.project-graphics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5rem 2.5rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
 .project-point-text {
   flex: 1 1 320px;
   min-width: 280px;

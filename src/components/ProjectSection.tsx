@@ -1,3 +1,5 @@
+import './ProjectSection.css'
+
 import type {Project} from "../types/Project.tsx";
 import ProjectLinks from "./ProjectLinks.tsx";
 import ProjectInfo from "./ProjectInfo.tsx";
@@ -7,13 +9,18 @@ import ProjectPointDisplay from "./ProjectPointDisplay.tsx";
 import duration_icon from '../assets/stopwatch.svg';
 import people_icon from '../assets/people.svg';
 import calendar_icon from '../assets/calendar.svg';
+import { useState } from "react";
 
 type PropType = {
     project: Project;
 }
 
 function ProjectSection (props: PropType) {
+    const [imageOverlayOpen, setImageOverlayOpen] = useState(false);
+    const [overlayImageSrc, setOverlayImageSrc] = useState('');
+    const [overlayImageType, setOverlayImageType] = useState<'image' | 'video' | 'youtube'>('image');
     const project: Project = props.project;
+    
     return (
         <section
             key={project.id}
@@ -61,11 +68,67 @@ function ProjectSection (props: PropType) {
                 ) : (
                     <ProjectPointDisplay key={1} point={project.points[0]} isEven={true} />
                 )}
+                {imageOverlayOpen && (
+                <div 
+                    className="image_overlay"
+                    role="dialog" aria-modal="true"
+                    onClick={() => setImageOverlayOpen(false)}
+                >
+                    <div
+                        style={{ background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden' }}
+                    >
+                        {overlayImageType === 'youtube' ? (
+                            <iframe
+                                title={`${project.title} - Focused graphic`}
+                                src={`https://www.youtube.com/embed/${overlayImageSrc}`}
+                                style={{ width: '100%', border: 0, borderRadius: '0.75rem', }}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                        ) : overlayImageType === 'video' ? (
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                title={`${project.title} - Focused graphic`}
+                                src={overlayImageSrc}
+                                style={{ 
+                                    width: '100%',
+                                    minWidth: '1280px',
+                                    objectFit: 'cover', 
+                                    borderRadius: '0.75rem', 
+                                }}
+                            />
+                        ) : (
+                            <img
+                                src={overlayImageSrc}
+                                alt={`${project.title} - Focused graphic`}
+                                style={{
+                                    minHeight: '720px',
+                                    maxHeight: '1080px',
+                                    maxWidth: '1280px',
+                                    objectFit: 'cover',
+                                    backgroundColor: 'transparent',
+                                    borderRadius: '0.75rem',
+                                }} />
+                        )}
+                    </div>
+                </div>
+            )}
                 {project.graphics && project.graphics.length > 0 && (
                     <div className="project-container">
                         <div className="project-graphics">
                             {project.graphics.map((graphic, gIndex) => (
-                                <div key={gIndex} style={{ width: '100%', maxWidth: '480px', background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden' }}>
+                                <div
+                                    key={gIndex}
+                                    style={{ width: '100%', maxWidth: '480px', background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden', cursor: 'pointer' }}
+                                    onClick={() => {
+                                        setImageOverlayOpen(true);
+                                        setOverlayImageSrc(graphic.src);
+                                        setOverlayImageType(graphic.type);
+                                    }}
+                                >
                                     {graphic.type === 'youtube' ? (
                                         <iframe
                                             title={`${project.title} - graphic ${gIndex + 1}`}
