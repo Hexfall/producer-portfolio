@@ -16,6 +16,7 @@ const ProjectPointDisplay: React.FC<{ point: ProjectPoint; isEven: boolean }> = 
         overflow: 'hidden',
         padding: '1.25rem',
         textAlign: 'left',
+        cursor: 'ew-resize',
         }}
     >
         <div className="project-point-text">

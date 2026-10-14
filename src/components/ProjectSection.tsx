@@ -122,7 +122,7 @@ function ProjectSection (props: PropType) {
                             {project.graphics.map((graphic, gIndex) => (
                                 <div
                                     key={gIndex}
-                                    style={{ width: '100%', maxWidth: '480px', background: 'transparent', borderRadius: '0.75rem', overflow: 'hidden', cursor: 'pointer' }}
+                                    className="project-graphic"
                                     onClick={() => {
                                         setImageOverlayOpen(true);
                                         setOverlayImageSrc(graphic.src);
