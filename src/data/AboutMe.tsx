@@ -1,8 +1,8 @@
 import type { Project } from "../types/Project";
 
-import self_showcase from '../assets/AboutMe/DADIU Presentation - Fullscreen.png';
+import self_showcase from '../assets/AboutMe/Cringe.png';
 import title from '../assets/AboutMe/Title.png'
-import focus_shot from '../assets/AboutMe/DADIU Presentation - Focus shot.png';
+import focus_shot from '../assets/AboutMe/Highlight.jpg';
 
 import linkedinLogo from "../assets/linkedin.svg";
 import emailLogo from "../assets/email.svg";
